@@ -416,3 +416,14 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Codex / AI tooling
+.codex
+.codex/
+*.codex
+
+# Archivos temporales de sesiones IA
+*.session
+*.promptlog
+.ai-cache/
+.llm-cache/
