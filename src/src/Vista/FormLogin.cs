@@ -11,25 +11,12 @@ using MaterialSkin.Controls;
 
 namespace src.Vista
 {
-    public partial class Login : MaterialForm
+    public partial class FormLogin : MaterialForm
     {
-        public Login()
+        public FormLogin()
         {
             InitializeComponent();
 
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-
-            // 1. Cambia el tema base si lo deseas (LIGHT o DARK)
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-
-            materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.Teal600,
-            Primary.Teal800,
-            Primary.Teal200,
-            Accent.DeepOrange200,
-            TextShade.WHITE
-            );
         }
     }
 }
