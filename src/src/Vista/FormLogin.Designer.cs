@@ -36,13 +36,16 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.btnSalirlogin = new MaterialSkin.Controls.MaterialButton();
+            this.swtOscuro = new MaterialSkin.Controls.MaterialSwitch();
             this.SuspendLayout();
             // 
             // btnIniciarsesion
             // 
             this.btnIniciarsesion.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnIniciarsesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnIniciarsesion.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             this.btnIniciarsesion.Depth = 0;
+            this.btnIniciarsesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIniciarsesion.HighEmphasis = true;
             this.btnIniciarsesion.Icon = null;
             this.btnIniciarsesion.Location = new System.Drawing.Point(351, 346);
@@ -55,15 +58,16 @@
             this.btnIniciarsesion.Text = "Iniciar sesión";
             this.btnIniciarsesion.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnIniciarsesion.UseAccentColor = false;
-            this.btnIniciarsesion.UseVisualStyleBackColor = true;
+            this.btnIniciarsesion.UseVisualStyleBackColor = false;
             // 
             // txtNomuser
             // 
             this.txtNomuser.AnimateReadOnly = false;
+            this.txtNomuser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNomuser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.txtNomuser.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtNomuser.Depth = 0;
-            this.txtNomuser.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNomuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNomuser.HideSelection = true;
             this.txtNomuser.LeadingIcon = null;
             this.txtNomuser.Location = new System.Drawing.Point(301, 130);
@@ -88,6 +92,7 @@
             // txtContraseña
             // 
             this.txtContraseña.AnimateReadOnly = false;
+            this.txtContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.txtContraseña.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtContraseña.Depth = 0;
@@ -116,8 +121,10 @@
             // lblNomuser
             // 
             this.lblNomuser.AutoSize = true;
+            this.lblNomuser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblNomuser.Depth = 0;
             this.lblNomuser.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblNomuser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblNomuser.Location = new System.Drawing.Point(141, 144);
             this.lblNomuser.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblNomuser.Name = "lblNomuser";
@@ -128,8 +135,10 @@
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
+            this.lblContraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.lblContraseña.Depth = 0;
             this.lblContraseña.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblContraseña.Location = new System.Drawing.Point(194, 235);
             this.lblContraseña.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblContraseña.Name = "lblContraseña";
@@ -140,9 +149,11 @@
             // materialLabel3
             // 
             this.materialLabel3.AutoSize = true;
+            this.materialLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 34F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.H4;
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.HighEmphasis = true;
             this.materialLabel3.Location = new System.Drawing.Point(253, 46);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
@@ -154,9 +165,11 @@
             // materialLabel4
             // 
             this.materialLabel4.AutoSize = true;
+            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.SubtleEmphasis;
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel4.Location = new System.Drawing.Point(328, 307);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
@@ -167,8 +180,10 @@
             // btnSalirlogin
             // 
             this.btnSalirlogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnSalirlogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.btnSalirlogin.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Dense;
             this.btnSalirlogin.Depth = 0;
+            this.btnSalirlogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSalirlogin.HighEmphasis = true;
             this.btnSalirlogin.Icon = null;
             this.btnSalirlogin.Location = new System.Drawing.Point(683, 390);
@@ -181,13 +196,33 @@
             this.btnSalirlogin.Text = "Salir";
             this.btnSalirlogin.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnSalirlogin.UseAccentColor = true;
-            this.btnSalirlogin.UseVisualStyleBackColor = true;
+            this.btnSalirlogin.UseVisualStyleBackColor = false;
+            this.btnSalirlogin.Click += new System.EventHandler(this.btnSalirlogin_Click);
+            // 
+            // swtOscuro
+            // 
+            this.swtOscuro.AutoSize = true;
+            this.swtOscuro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.swtOscuro.Depth = 0;
+            this.swtOscuro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.swtOscuro.Location = new System.Drawing.Point(620, 17);
+            this.swtOscuro.Margin = new System.Windows.Forms.Padding(0);
+            this.swtOscuro.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.swtOscuro.MouseState = MaterialSkin.MouseState.HOVER;
+            this.swtOscuro.Name = "swtOscuro";
+            this.swtOscuro.Ripple = true;
+            this.swtOscuro.Size = new System.Drawing.Size(153, 37);
+            this.swtOscuro.TabIndex = 9;
+            this.swtOscuro.Text = "Modo Oscuro";
+            this.swtOscuro.UseVisualStyleBackColor = false;
+            this.swtOscuro.CheckedChanged += new System.EventHandler(this.swtOscuro_CheckedChanged);
             // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(816, 489);
+            this.Controls.Add(this.swtOscuro);
             this.Controls.Add(this.btnSalirlogin);
             this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialLabel3);
@@ -196,6 +231,7 @@
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtNomuser);
             this.Controls.Add(this.btnIniciarsesion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.Name = "FormLogin";
             this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
@@ -215,5 +251,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialButton btnSalirlogin;
+        private MaterialSkin.Controls.MaterialSwitch swtOscuro;
     }
 }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MaterialSkin;
-using MaterialSkin.Controls;
+using System.Windows.Forms;
 
 namespace src.Vista
 {
@@ -35,5 +36,18 @@ namespace src.Vista
                 : MaterialSkinManager.Themes.LIGHT;
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_NCHITTEST = 0x84;
+            const int HTCAPTION = 0x02;
+
+            base.WndProc(ref m);
+
+            // Si el usuario hace clic (test de golpe), le decimos que golpeó el "Caption" (Barra de título)
+            if (m.Msg == WM_NCHITTEST)
+            {
+                m.Result = (IntPtr)HTCAPTION;
+            }
+        }
     }
 }
