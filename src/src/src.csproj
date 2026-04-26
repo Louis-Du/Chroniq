@@ -55,6 +55,18 @@
     <Compile Include="Vista\BaseMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vista\FormInvitado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FormInvitado.Designer.cs">
+      <DependentUpon>FormInvitado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\FormLider.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FormLider.Designer.cs">
+      <DependentUpon>FormLider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
