@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ============================================================
+//  CAPA: VISTA  →  Archivo: FormInvitado.cs
+// ============================================================
+//  Formulario principal del usuario tipo Invitado.
+//
+//  ¿Quién abre este formulario?
+//  → El LoginControlador, desde Controlador/LoginControlador.cs
+//    cuando detecta que el tipoUser es "Invitado".
+// ============================================================
+
+using System;
 using System.Windows.Forms;
 using MaterialSkin;
 
@@ -13,14 +16,24 @@ namespace src.Vista
 {
     public partial class FormInvitado : BaseMaterialForm
     {
-        public FormInvitado()
+        /// <summary>
+        /// Constructor actualizado: recibe el nombre del invitado autenticado.
+        /// El Controlador lo llama así:
+        ///   new FormInvitado(usuarioEncontrado.NombreUser)
+        /// </summary>
+        /// <param name="nombreUsuario">Nombre del invitado que inició sesión.</param>
+        public FormInvitado(string nombreUsuario)
         {
             InitializeComponent();
+
+            // Mostramos el nombre en el título del formulario como bienvenida.
+            this.Text = $"Chroniq - Invitado: {nombreUsuario}";
         }
 
         private void FormInvitado_Load(object sender, EventArgs e)
         {
-
+            // Aquí irá la carga de los eventos asignados al invitado
+            // en las próximas historias de usuario (HU-07).
         }
     }
 }
