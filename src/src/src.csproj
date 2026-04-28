@@ -180,6 +180,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vista\FormInvitado.resx">
+      <DependentUpon>FormInvitado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\FormLider.resx">
+      <DependentUpon>FormLider.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>

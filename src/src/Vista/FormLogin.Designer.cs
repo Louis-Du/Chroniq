@@ -59,6 +59,7 @@
             this.btnIniciarsesion.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnIniciarsesion.UseAccentColor = false;
             this.btnIniciarsesion.UseVisualStyleBackColor = false;
+            this.btnIniciarsesion.Click += new System.EventHandler(this.btnIniciarsesion_Click_1);
             // 
             // txtNomuser
             // 
@@ -221,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 528);
+            this.ClientSize = new System.Drawing.Size(848, 567);
             this.Controls.Add(this.swtOscuro);
             this.Controls.Add(this.btnSalirlogin);
             this.Controls.Add(this.materialLabel4);

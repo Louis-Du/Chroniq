@@ -13,9 +13,10 @@
 //    cuando detecta que el tipoUser es "Lider".
 // ============================================================
 
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Windows.Forms;
-using MaterialSkin;
 
 namespace src.Vista
 {
@@ -34,6 +35,8 @@ namespace src.Vista
             // Mostramos el nombre en el título del formulario como bienvenida.
             // Aquí también podrías actualizar una etiqueta del Designer.
             this.Text = $"Chroniq - Líder: {nombreUsuario}";
+
+            lblNomlid.Text = nombreUsuario;
         }
 
         private void FormLider_Load(object sender, EventArgs e)

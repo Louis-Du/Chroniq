@@ -8,9 +8,10 @@
 //    cuando detecta que el tipoUser es "Invitado".
 // ============================================================
 
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Windows.Forms;
-using MaterialSkin;
 
 namespace src.Vista
 {
@@ -28,6 +29,7 @@ namespace src.Vista
 
             // Mostramos el nombre en el título del formulario como bienvenida.
             this.Text = $"Chroniq - Invitado: {nombreUsuario}";
+
         }
 
         private void FormInvitado_Load(object sender, EventArgs e)

@@ -102,5 +102,10 @@ namespace src.Vista
                 Application.Exit();
             }
         }
+
+        private void btnIniciarsesion_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

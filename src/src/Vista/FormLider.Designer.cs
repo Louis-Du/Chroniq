@@ -28,20 +28,239 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
+            this.btnConsultar = new MaterialSkin.Controls.MaterialButton();
+            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
+            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
+            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
+            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
+            this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.creadoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // materialDivider1
+            // 
+            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialDivider1.Depth = 0;
+            this.materialDivider1.Location = new System.Drawing.Point(20, 82);
+            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDivider1.Name = "materialDivider1";
+            this.materialDivider1.Size = new System.Drawing.Size(764, 335);
+            this.materialDivider1.TabIndex = 0;
+            this.materialDivider1.Text = "materialDivider1";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this._id,
+            this.codigoEvent,
+            this.nombreEvent,
+            this.creadoPor,
+            this.tipoEvent,
+            this.fechahoraIniEvent,
+            this.fechahoraFinEvent});
+            this.dataGridView1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dataGridView1.Location = new System.Drawing.Point(42, 98);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(721, 208);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // btnVolver
+            // 
+            this.btnVolver.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnVolver.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnVolver.Depth = 0;
+            this.btnVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnVolver.HighEmphasis = true;
+            this.btnVolver.Icon = null;
+            this.btnVolver.Location = new System.Drawing.Point(42, 37);
+            this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnVolver.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnVolver.Size = new System.Drawing.Size(76, 36);
+            this.btnVolver.TabIndex = 2;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnVolver.UseAccentColor = false;
+            this.btnVolver.UseVisualStyleBackColor = false;
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnConsultar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnConsultar.Depth = 0;
+            this.btnConsultar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnConsultar.HighEmphasis = true;
+            this.btnConsultar.Icon = null;
+            this.btnConsultar.Location = new System.Drawing.Point(129, 354);
+            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnConsultar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnConsultar.Size = new System.Drawing.Size(106, 36);
+            this.btnConsultar.TabIndex = 3;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnConsultar.UseAccentColor = false;
+            this.btnConsultar.UseVisualStyleBackColor = false;
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnActualizar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnActualizar.Depth = 0;
+            this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnActualizar.HighEmphasis = true;
+            this.btnActualizar.Icon = null;
+            this.btnActualizar.Location = new System.Drawing.Point(542, 354);
+            this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnActualizar.Size = new System.Drawing.Size(109, 36);
+            this.btnActualizar.TabIndex = 4;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnActualizar.UseAccentColor = false;
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            // 
+            // btnCrear
+            // 
+            this.btnCrear.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCrear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnCrear.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCrear.Depth = 0;
+            this.btnCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCrear.HighEmphasis = true;
+            this.btnCrear.Icon = null;
+            this.btnCrear.Location = new System.Drawing.Point(359, 354);
+            this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCrear.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCrear.Size = new System.Drawing.Size(67, 36);
+            this.btnCrear.TabIndex = 5;
+            this.btnCrear.Text = "Crear";
+            this.btnCrear.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCrear.UseAccentColor = false;
+            this.btnCrear.UseVisualStyleBackColor = false;
+            // 
+            // lblBienv
+            // 
+            this.lblBienv.AutoSize = true;
+            this.lblBienv.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblBienv.Depth = 0;
+            this.lblBienv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblBienv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblBienv.Location = new System.Drawing.Point(165, 54);
+            this.lblBienv.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblBienv.Name = "lblBienv";
+            this.lblBienv.Size = new System.Drawing.Size(87, 19);
+            this.lblBienv.TabIndex = 6;
+            this.lblBienv.Text = "Bienvenido: ";
+            // 
+            // lblNomlid
+            // 
+            this.lblNomlid.AutoSize = true;
+            this.lblNomlid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.lblNomlid.Depth = 0;
+            this.lblNomlid.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblNomlid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblNomlid.Location = new System.Drawing.Point(258, 54);
+            this.lblNomlid.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblNomlid.Name = "lblNomlid";
+            this.lblNomlid.Size = new System.Drawing.Size(107, 19);
+            this.lblNomlid.TabIndex = 7;
+            this.lblNomlid.Text = "materialLabel2";
+            // 
+            // _id
+            // 
+            this._id.HeaderText = "ID";
+            this._id.Name = "_id";
+            // 
+            // codigoEvent
+            // 
+            this.codigoEvent.HeaderText = "Codigo";
+            this.codigoEvent.Name = "codigoEvent";
+            // 
+            // nombreEvent
+            // 
+            this.nombreEvent.HeaderText = "Nombre ";
+            this.nombreEvent.Name = "nombreEvent";
+            // 
+            // creadoPor
+            // 
+            this.creadoPor.HeaderText = "Creado por";
+            this.creadoPor.Name = "creadoPor";
+            // 
+            // tipoEvent
+            // 
+            this.tipoEvent.HeaderText = "Tipo";
+            this.tipoEvent.Name = "tipoEvent";
+            // 
+            // fechahoraIniEvent
+            // 
+            this.fechahoraIniEvent.HeaderText = "Hora Inicio";
+            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
+            // 
+            // fechahoraFinEvent
+            // 
+            this.fechahoraFinEvent.HeaderText = "Hora Fin";
+            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
             // 
             // FormLider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblNomlid);
+            this.Controls.Add(this.lblBienv);
+            this.Controls.Add(this.btnCrear);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnConsultar);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.materialDivider1);
+            this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.Name = "FormLider";
+            this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.Text = "FormLider";
             this.Load += new System.EventHandler(this.FormLider_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private MaterialSkin.Controls.MaterialDivider materialDivider1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private MaterialSkin.Controls.MaterialButton btnVolver;
+        private MaterialSkin.Controls.MaterialButton btnConsultar;
+        private MaterialSkin.Controls.MaterialButton btnActualizar;
+        private MaterialSkin.Controls.MaterialButton btnCrear;
+        private MaterialSkin.Controls.MaterialLabel lblBienv;
+        private MaterialSkin.Controls.MaterialLabel lblNomlid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoEvent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreEvent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn creadoPor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoEvent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechahoraIniEvent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechahoraFinEvent;
     }
 }
