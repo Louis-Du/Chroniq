@@ -111,6 +111,8 @@ namespace src.Controlador
         /// Retorna lista vacía si no hay eventos, nunca null,
         /// para que la Vista no tenga que verificar antes de asignar al grid.
         /// </summary>
+        
+        /*
         public List<Evento> ConsultarEventos()
         {
             // Convertimos la fecha actual al mismo formato string de la BD
@@ -128,7 +130,7 @@ namespace src.Controlador
             // → Consultar la colección Eventos en MongoDB.
             // → Filtrar solo donde fechahoraIniEvent > fechaHoraActual.
             // → Retornar lista vacía (nunca null) si no hay resultados.
-            List<Evento> eventos = _eventoModelo.ObtenerEventos(ahora);
+          //  List<Evento> eventos = _eventoModelo.ObtenerEventos(ahora);
 
             if (eventos.Count == 0)
                 MessageBox.Show("No hay eventos programados próximamente.",
@@ -136,5 +138,6 @@ namespace src.Controlador
 
             return eventos;
         }
+        */
     }
 }

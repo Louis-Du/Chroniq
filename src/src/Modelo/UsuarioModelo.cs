@@ -56,13 +56,13 @@ namespace src.Modelo
         public string EmailUser { get; set; }
 
         [BsonElement("telefonoUser")]
-        public string TelefonoUser { get; set; }
+        public long TelefonoUser { get; set; }
 
         [BsonElement("edadUser")]
-        public string EdadUser { get; set; }
+        public int EdadUser { get; set; }
 
         [BsonElement("numeroCedula")]
-        public string NumeroCedula { get; set; }
+        public int NumeroCedula { get; set; }
     }
 
 

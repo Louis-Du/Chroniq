@@ -9,6 +9,7 @@
 //  Se actualiza la llamada en AbrirFormulario para pasar ambos.
 // ============================================================
 
+using System;
 using System.Windows.Forms;
 using src.Modelo;
 using src.Vista;
@@ -32,17 +33,19 @@ namespace src.Controlador
         /// </summary>
         public void IniciarSesion(string nombreUser, string passwordUser, Form formularioActual)
         {
-            // PASO 1: Validar campos vacíos.
-            if (string.IsNullOrWhiteSpace(nombreUser) || string.IsNullOrWhiteSpace(passwordUser))
+            try
             {
-                MessageBox.Show("Por favor, ingresa el nombre de usuario y la contraseña.",
-                    "Campos requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                // PASO 1: Validar campos vacíos.
+                if (string.IsNullOrWhiteSpace(nombreUser) || string.IsNullOrWhiteSpace(passwordUser))
+                {
+                    MessageBox.Show("Por favor, ingresa el nombre de usuario y la contraseña.",
+                        "Campos requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            // PASO 2: Consultar el Modelo.
-            // Llamada a: Modelo/UsuarioModelo.cs → BuscarPorCredenciales(...)
-            Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(nombreUser, passwordUser);
+                // PASO 2: Consultar el Modelo.
+                // Llamada a: Modelo/UsuarioModelo.cs → BuscarPorCredenciales(...)
+                Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(nombreUser, passwordUser);
 
             // PASO 3: Lógica del negocio sobre el resultado.
             if (usuarioEncontrado == null)
@@ -71,6 +74,13 @@ namespace src.Controlador
                 MessageBox.Show(
                     $"El tipo de usuario '{usuarioEncontrado.TipoUser}' no está configurado en el sistema.",
                     "Error de configuración", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error al iniciar sesión:\n\n{ex.Message}\n\nDetalles:\n{ex.InnerException?.Message}",
+                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
