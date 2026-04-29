@@ -49,7 +49,7 @@
             this.materialCard1.Controls.Add(this.dgInvitEventos);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialCard1.Location = new System.Drawing.Point(76, 95);
+            this.materialCard1.Location = new System.Drawing.Point(70, 146);
             this.materialCard1.Margin = new System.Windows.Forms.Padding(14);
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
@@ -67,7 +67,7 @@
             this.tipoevent,
             this.fechahorainiEvent,
             this.fechahorafinEvent});
-            this.dgInvitEventos.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgInvitEventos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgInvitEventos.Location = new System.Drawing.Point(47, 34);
             this.dgInvitEventos.Name = "dgInvitEventos";
             this.dgInvitEventos.Size = new System.Drawing.Size(542, 171);
@@ -107,7 +107,7 @@
             this.materialButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialButton1.HighEmphasis = true;
             this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(353, 347);
+            this.materialButton1.Location = new System.Drawing.Point(343, 398);
             this.materialButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton1.Name = "materialButton1";
@@ -126,7 +126,7 @@
             this.lblBienv.Depth = 0;
             this.lblBienv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblBienv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblBienv.Location = new System.Drawing.Point(240, 49);
+            this.lblBienv.Location = new System.Drawing.Point(240, 113);
             this.lblBienv.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblBienv.Name = "lblBienv";
             this.lblBienv.Size = new System.Drawing.Size(83, 19);
@@ -140,7 +140,7 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(350, 49);
+            this.materialLabel2.Location = new System.Drawing.Point(350, 113);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             this.materialLabel2.Size = new System.Drawing.Size(107, 19);
@@ -156,7 +156,7 @@
             this.btnVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVolver.HighEmphasis = true;
             this.btnVolver.Icon = null;
-            this.btnVolver.Location = new System.Drawing.Point(53, 39);
+            this.btnVolver.Location = new System.Drawing.Point(53, 103);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVolver.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVolver.Name = "btnVolver";
@@ -179,9 +179,7 @@
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.lblBienv);
             this.Controls.Add(this.materialCard1);
-            this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.Name = "FormInvitado";
-            this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.Text = "FormInvitado";
             this.Load += new System.EventHandler(this.FormInvitado_Load);
             this.materialCard1.ResumeLayout(false);
