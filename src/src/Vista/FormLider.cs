@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using src.Controlador; // Para usar EventoControlador
-using src.Modelo;      // Para recibir List<Evento> del Controlador
 
 namespace src.Vista
 {
@@ -59,8 +58,7 @@ namespace src.Vista
             // Llamada a: Controlador/EventoControlador.cs → ConsultarEventos()
             // Devuelve List<Evento> con los eventos cuya fecha de inicio
             // es superior a la fecha y hora actual.
-            List<Evento> eventos = _eventoControlador.ConsultarEventos();
-
+            var eventos = _eventoControlador.ConsultarEventos();
             // Asignamos la lista al DataGridView.
             // El grid mostrará automáticamente las propiedades de Evento
             // como columnas: NombreEvent, TipoEvent, FechahoraIniEvent, etc.
