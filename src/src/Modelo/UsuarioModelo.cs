@@ -1,25 +1,4 @@
-﻿// ============================================================
-//  CAPA: MODELO  →  Archivo: UsuarioModelo.cs
-// ============================================================
-//  RESPONSABILIDAD: Este archivo hace DOS cosas relacionadas
-//  con los datos del usuario:
-//
-//  1. Define la ENTIDAD (clase Usuario): representa la
-//     estructura de un documento de la colección "Usuarios"
-//     en MongoDB. Es como el "molde" del dato.
-//
-//  2. Contiene el ACCESO A DATOS: el método que va a la BD
-//     y busca un usuario. NO decide qué hacer con el resultado,
-//     solo busca y devuelve el dato (o null si no existe).
-//     La decisión la toma el Controlador.
-//
-//  ¿Qué NO hace este archivo?
-//  - No abre formularios (eso es la Vista).
-//  - No valida si el usuario es líder o invitado (eso es
-//    el Controlador, que aplica la lógica del negocio).
-// ============================================================
-
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 
@@ -37,11 +16,9 @@ namespace src.Modelo
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
-        // El campo en MongoDB se llama "nombreUser"
         [BsonElement("nombreUser")]
         public string NombreUser { get; set; }
 
-        // El campo en MongoDB se llama "passwordUser"
         [BsonElement("passwordUser")]
         public string PasswordUser { get; set; }
 
@@ -65,17 +42,6 @@ namespace src.Modelo
         public int NumeroCedula { get; set; }
     }
 
-
-    // ==========================================================
-    //  PARTE 2: ACCESO A DATOS - UsuarioModelo
-    //  Aquí viven los métodos que consultan la colección
-    //  "Usuarios" en MongoDB.
-    //
-    //  ¿Quién llama a esta clase?
-    //  → El CONTROLADOR (LoginControlador) la instancia y
-    //    llama a sus métodos.
-    //  La Vista nunca toca esta clase directamente.
-    // ==========================================================
     public class UsuarioModelo
     {
         // Referencia a la colección "Usuarios" en MongoDB.
@@ -89,9 +55,6 @@ namespace src.Modelo
         /// </summary>
         public UsuarioModelo()
         {
-            // Llamamos a Conexion (mismo Modelo) para obtener la BD.
-            // El Controlador no necesita saber nada sobre MongoDB;
-            // esa responsabilidad queda encapsulada aquí.
             IMongoDatabase baseDatos = Conexion.ObtenerBaseDatos();
             _coleccionUsuarios = baseDatos.GetCollection<Usuario>("Usuarios");
         }
@@ -110,7 +73,7 @@ namespace src.Modelo
         /// Retorna: el objeto Usuario si las credenciales son correctas,
         ///          null si no existe ningún usuario con esos datos.
         /// </summary>
-        /// <param name="nombreUser">Nombre de usuario ingresado en el formulario.</param>
+        /// <param name="numeroCedula">Nombre de usuario ingresado en el formulario.</param>
         /// <param name="passwordUser">Contraseña ingresada en el formulario.</param>
         public Usuario BuscarPorCredenciales(int numeroCedula, string passwordUser)
         {

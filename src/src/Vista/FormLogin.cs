@@ -2,17 +2,13 @@
 using System;
 using System.Windows.Forms;
 using MaterialSkin;
-using src.Controlador; // Necesitamos LoginControlador para delegarle la lógica
+using src.Controlador;
 
 namespace src.Vista
 {
     public partial class FormLogin : BaseMaterialForm
     {
-        // -------------------------------------------------------
-        //  La Vista tiene una referencia al Controlador.
-        //  El Controlador se crea cuando se abre el formulario.
-        //  La Vista NUNCA crea instancias del Modelo directamente.
-        // -------------------------------------------------------
+
         private readonly LoginControlador _loginControlador;
 
         /// <summary>
@@ -21,11 +17,7 @@ namespace src.Vista
         /// </summary>
         public FormLogin()
         {
-            InitializeComponent(); // Inicializa los controles diseñados visualmente
-
-            // Instanciamos el Controlador una sola vez.
-            // El Controlador internamente prepara el Modelo.
-            // La Vista no sabe (ni necesita saber) qué hace el Controlador internamente.
+            InitializeComponent(); 
             _loginControlador = new LoginControlador();
         }
 
@@ -61,6 +53,15 @@ namespace src.Vista
             // Llamada a: Controlador/LoginControlador.cs → método IniciarSesion(...)
             // El Controlador validará, consultará el Modelo y abrirá el formulario correcto.
             _loginControlador.IniciarSesion(numeroCedula, passwordIngresada, this);
+        }
+
+        private void txtNumeroCedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Evita que se ingresen caracteres no numéricos
+                MessageBox.Show("Solo se permiten números en el campo de ID de usuario.", "APLICACION");
+            }
         }
     }
 }

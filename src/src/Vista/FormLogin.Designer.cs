@@ -89,6 +89,7 @@
             this.txtNumeroCedula.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNumeroCedula.TrailingIcon = null;
             this.txtNumeroCedula.UseSystemPasswordChar = false;
+            this.txtNumeroCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroCedula_KeyPress);
             // 
             // txtContraseña
             // 

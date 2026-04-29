@@ -1,15 +1,4 @@
-﻿// ============================================================
-//  CAPA: CONTROLADOR  →  Archivo: LoginControlador.cs
-// ============================================================
-//  HU-01: Iniciar sesión
-//  HU-08: Cerrar sesión (parcial - la Vista maneja el formulario)
-//
-//  Cambio respecto a la versión anterior:
-//  FormLider ahora recibe dos parámetros: NombreUser e Id.
-//  Se actualiza la llamada en AbrirFormulario para pasar ambos.
-// ============================================================
-
-using System;
+﻿using System;
 using System.Windows.Forms;
 using src.Modelo;
 using src.Vista;
@@ -35,7 +24,6 @@ namespace src.Controlador
         {
             try
             {
-                // PASO 1: Validar campos vacíos.
                 if (numeroCedula <= 0 || string.IsNullOrWhiteSpace(passwordUser))
                 {
                     MessageBox.Show("Por favor, ingresa el nombre de usuario y la contraseña.",
@@ -43,11 +31,8 @@ namespace src.Controlador
                     return;
                 }
 
-                // PASO 2: Consultar el Modelo.
-                // Llamada a: Modelo/UsuarioModelo.cs → BuscarPorCredenciales(...)
                 Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(numeroCedula, passwordUser);
 
-            // PASO 3: Lógica del negocio sobre el resultado.
             if (usuarioEncontrado == null)
             {
                 MessageBox.Show("Usuario o contraseña incorrectos. Intenta de nuevo.",
@@ -57,8 +42,6 @@ namespace src.Controlador
 
             if (usuarioEncontrado.TipoUser == "Lider")
             {
-                // Pasamos NombreUser para la bienvenida e Id para las operaciones futuras.
-                // El Id es el _id de MongoDB que necesitan HU-02 (creadoPor) y HU-05.
                 AbrirFormulario(
                     new FormLider(usuarioEncontrado.NombreUser, usuarioEncontrado.Id),
                     formularioActual);
