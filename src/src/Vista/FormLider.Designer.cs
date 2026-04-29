@@ -30,12 +30,6 @@
         {
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
-            this.btnConsultar = new MaterialSkin.Controls.MaterialButton();
-            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
-            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
-            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
-            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
             this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +37,12 @@
             this.tipoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
+            this.btnConsultar = new MaterialSkin.Controls.MaterialButton();
+            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
+            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
+            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
+            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +59,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this._id,
@@ -73,6 +76,41 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(721, 208);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // _id
+            // 
+            this._id.HeaderText = "ID";
+            this._id.Name = "_id";
+            // 
+            // codigoEvent
+            // 
+            this.codigoEvent.HeaderText = "Codigo";
+            this.codigoEvent.Name = "codigoEvent";
+            // 
+            // nombreEvent
+            // 
+            this.nombreEvent.HeaderText = "Nombre ";
+            this.nombreEvent.Name = "nombreEvent";
+            // 
+            // creadoPor
+            // 
+            this.creadoPor.HeaderText = "Creado por";
+            this.creadoPor.Name = "creadoPor";
+            // 
+            // tipoEvent
+            // 
+            this.tipoEvent.HeaderText = "Tipo";
+            this.tipoEvent.Name = "tipoEvent";
+            // 
+            // fechahoraIniEvent
+            // 
+            this.fechahoraIniEvent.HeaderText = "Hora Inicio";
+            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
+            // 
+            // fechahoraFinEvent
+            // 
+            this.fechahoraFinEvent.HeaderText = "Hora Fin";
+            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
             // 
             // btnVolver
             // 
@@ -94,6 +132,7 @@
             this.btnVolver.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnVolver.UseAccentColor = false;
             this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnConsultar
             // 
@@ -185,41 +224,6 @@
             this.lblNomlid.Size = new System.Drawing.Size(107, 19);
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
-            // 
-            // _id
-            // 
-            this._id.HeaderText = "ID";
-            this._id.Name = "_id";
-            // 
-            // codigoEvent
-            // 
-            this.codigoEvent.HeaderText = "Codigo";
-            this.codigoEvent.Name = "codigoEvent";
-            // 
-            // nombreEvent
-            // 
-            this.nombreEvent.HeaderText = "Nombre ";
-            this.nombreEvent.Name = "nombreEvent";
-            // 
-            // creadoPor
-            // 
-            this.creadoPor.HeaderText = "Creado por";
-            this.creadoPor.Name = "creadoPor";
-            // 
-            // tipoEvent
-            // 
-            this.tipoEvent.HeaderText = "Tipo";
-            this.tipoEvent.Name = "tipoEvent";
-            // 
-            // fechahoraIniEvent
-            // 
-            this.fechahoraIniEvent.HeaderText = "Hora Inicio";
-            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
-            // 
-            // fechahoraFinEvent
-            // 
-            this.fechahoraFinEvent.HeaderText = "Hora Fin";
-            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
             // 
             // FormLider
             // 

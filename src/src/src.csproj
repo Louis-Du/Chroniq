@@ -153,6 +153,12 @@
     <Compile Include="Vista\BaseMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Vista\FormCrearEvento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FormCrearEvento.Designer.cs">
+      <DependentUpon>FormCrearEvento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\FormInvitado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vista\FormCrearEvento.resx">
+      <DependentUpon>FormCrearEvento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormInvitado.resx">
       <DependentUpon>FormInvitado.cs</DependentUpon>
     </EmbeddedResource>

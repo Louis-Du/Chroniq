@@ -64,5 +64,11 @@ namespace src.Vista
             // como columnas: NombreEvent, TipoEvent, FechahoraIniEvent, etc.
             dgvEventos.DataSource = eventos;
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new FormLogin().Show(); // Cierra el formulario actual y vuelve al Login
+        }
     }
 }

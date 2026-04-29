@@ -37,5 +37,11 @@ namespace src.Vista
             // Aquí irá la carga de los eventos asignados al invitado
             // en las próximas historias de usuario (HU-07).
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            new FormLogin().Show(); // Cierra el formulario actual y vuelve al Login
+        }
     }
 }
