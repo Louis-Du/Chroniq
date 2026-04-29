@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,24 +37,12 @@
             this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVolver = new MaterialSkin.Controls.MaterialButton();
-            this.btnConsultar = new MaterialSkin.Controls.MaterialButton();
             this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
             this.btnCrear = new MaterialSkin.Controls.MaterialButton();
             this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
             this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // materialDivider1
-            // 
-            this.materialDivider1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialDivider1.Depth = 0;
-            this.materialDivider1.Location = new System.Drawing.Point(20, 82);
-            this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(764, 335);
-            this.materialDivider1.TabIndex = 0;
-            this.materialDivider1.Text = "materialDivider1";
             // 
             // dataGridView1
             // 
@@ -71,8 +58,8 @@
             this.tipoEvent,
             this.fechahoraIniEvent,
             this.fechahoraFinEvent});
-            this.dataGridView1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dataGridView1.Location = new System.Drawing.Point(42, 98);
+            this.dataGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dataGridView1.Location = new System.Drawing.Point(42, 163);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(721, 208);
             this.dataGridView1.TabIndex = 1;
@@ -121,7 +108,7 @@
             this.btnVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVolver.HighEmphasis = true;
             this.btnVolver.Icon = null;
-            this.btnVolver.Location = new System.Drawing.Point(42, 37);
+            this.btnVolver.Location = new System.Drawing.Point(31, 94);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVolver.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVolver.Name = "btnVolver";
@@ -134,27 +121,6 @@
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // btnConsultar
-            // 
-            this.btnConsultar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnConsultar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.btnConsultar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.btnConsultar.Depth = 0;
-            this.btnConsultar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnConsultar.HighEmphasis = true;
-            this.btnConsultar.Icon = null;
-            this.btnConsultar.Location = new System.Drawing.Point(129, 354);
-            this.btnConsultar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.btnConsultar.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnConsultar.Size = new System.Drawing.Size(106, 36);
-            this.btnConsultar.TabIndex = 3;
-            this.btnConsultar.Text = "Consultar";
-            this.btnConsultar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.btnConsultar.UseAccentColor = false;
-            this.btnConsultar.UseVisualStyleBackColor = false;
-            // 
             // btnActualizar
             // 
             this.btnActualizar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -164,7 +130,7 @@
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnActualizar.HighEmphasis = true;
             this.btnActualizar.Icon = null;
-            this.btnActualizar.Location = new System.Drawing.Point(542, 354);
+            this.btnActualizar.Location = new System.Drawing.Point(445, 409);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizar.Name = "btnActualizar";
@@ -185,7 +151,7 @@
             this.btnCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCrear.HighEmphasis = true;
             this.btnCrear.Icon = null;
-            this.btnCrear.Location = new System.Drawing.Point(359, 354);
+            this.btnCrear.Location = new System.Drawing.Point(243, 409);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCrear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCrear.Name = "btnCrear";
@@ -204,7 +170,7 @@
             this.lblBienv.Depth = 0;
             this.lblBienv.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblBienv.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblBienv.Location = new System.Drawing.Point(165, 54);
+            this.lblBienv.Location = new System.Drawing.Point(145, 104);
             this.lblBienv.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblBienv.Name = "lblBienv";
             this.lblBienv.Size = new System.Drawing.Size(87, 19);
@@ -218,7 +184,7 @@
             this.lblNomlid.Depth = 0;
             this.lblNomlid.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblNomlid.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNomlid.Location = new System.Drawing.Point(258, 54);
+            this.lblNomlid.Location = new System.Drawing.Point(258, 104);
             this.lblNomlid.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblNomlid.Name = "lblNomlid";
             this.lblNomlid.Size = new System.Drawing.Size(107, 19);
@@ -229,18 +195,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 475);
             this.Controls.Add(this.lblNomlid);
             this.Controls.Add(this.lblBienv);
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.materialDivider1);
-            this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.Name = "FormLider";
-            this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.Text = "FormLider";
             this.Load += new System.EventHandler(this.FormLider_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -250,11 +212,8 @@
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private MaterialSkin.Controls.MaterialButton btnVolver;
-        private MaterialSkin.Controls.MaterialButton btnConsultar;
         private MaterialSkin.Controls.MaterialButton btnActualizar;
         private MaterialSkin.Controls.MaterialButton btnCrear;
         private MaterialSkin.Controls.MaterialLabel lblBienv;

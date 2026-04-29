@@ -17,7 +17,7 @@ namespace src
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormCrearEvento());
+            Application.Run(new FormLogin());
         }
     }
 }

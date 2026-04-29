@@ -33,18 +33,18 @@ namespace src.Vista
                 : MaterialSkinManager.Themes.LIGHT;
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            const int WM_NCHITTEST = 0x84;
-            const int HTCAPTION = 0x02;
+        //protected override void WndProc(ref Message m)
+        //{
+        //    const int WM_NCHITTEST = 0x84;
+        //    const int HTCAPTION = 0x02;
 
-            base.WndProc(ref m);
+        //    base.WndProc(ref m);
 
-            // Si el usuario hace clic (test de golpe), le decimos que golpeó el "Caption" (Barra de título)
-            if (m.Msg == WM_NCHITTEST)
-            {
-                m.Result = (IntPtr)HTCAPTION;
-            }
-        }
+        //    // Si el usuario hace clic (test de golpe), le decimos que golpeó el "Caption" (Barra de título)
+        //    if (m.Msg == WM_NCHITTEST)
+        //    {
+        //        m.Result = (IntPtr)HTCAPTION;
+        //    }
+        //}
     }
 }
