@@ -112,11 +112,11 @@ namespace src.Modelo
         /// </summary>
         /// <param name="nombreUser">Nombre de usuario ingresado en el formulario.</param>
         /// <param name="passwordUser">Contraseña ingresada en el formulario.</param>
-        public Usuario BuscarPorCredenciales(string nombreUser, string passwordUser)
+        public Usuario BuscarPorCredenciales(int numeroCedula, string passwordUser)
         {
-            // Construimos el filtro: buscamos donde nombreUser Y passwordUser coincidan.
+            // Construimos el filtro: buscamos donde numeroCedula Y passwordUser coincidan.
             var filtro = Builders<Usuario>.Filter.And(
-                Builders<Usuario>.Filter.Eq("nombreUser", nombreUser),
+                Builders<Usuario>.Filter.Eq("numeroCedula", numeroCedula),
                 Builders<Usuario>.Filter.Eq("passwordUser", passwordUser)
             );
 

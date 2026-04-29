@@ -53,14 +53,14 @@ namespace src.Vista
 
         private void btnIniciarsesion_Click_1(object sender, EventArgs e)
         {
-            // PASO 1: Leemos los valores del formulario (solo la Vista sabe dónde están).
-            string nombreIngresado = txtNomuser.Text.Trim();
+            // PASO 1: Leemos los valores el formulario (solo la Vista sabe dónde están).
+            int numeroCedula = int.Parse(txtNumeroCedula.Text.Trim());
             string passwordIngresada = txtContraseña.Text.Trim();
 
             // PASO 2: Delegamos la lógica al Controlador.
             // Llamada a: Controlador/LoginControlador.cs → método IniciarSesion(...)
             // El Controlador validará, consultará el Modelo y abrirá el formulario correcto.
-            _loginControlador.IniciarSesion(nombreIngresado, passwordIngresada, this);
+            _loginControlador.IniciarSesion(numeroCedula, passwordIngresada, this);
         }
     }
 }

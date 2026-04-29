@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnIniciarsesion = new MaterialSkin.Controls.MaterialButton();
-            this.txtNomuser = new MaterialSkin.Controls.MaterialTextBox2();
+            this.txtNumeroCedula = new MaterialSkin.Controls.MaterialTextBox2();
             this.txtContraseña = new MaterialSkin.Controls.MaterialTextBox2();
             this.lblNomuser = new MaterialSkin.Controls.MaterialLabel();
             this.lblContraseña = new MaterialSkin.Controls.MaterialLabel();
@@ -61,34 +61,34 @@
             this.btnIniciarsesion.UseVisualStyleBackColor = false;
             this.btnIniciarsesion.Click += new System.EventHandler(this.btnIniciarsesion_Click_1);
             // 
-            // txtNomuser
+            // txtNumeroCedula
             // 
-            this.txtNomuser.AnimateReadOnly = false;
-            this.txtNomuser.BackColor = System.Drawing.SystemColors.Control;
-            this.txtNomuser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.txtNomuser.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtNomuser.Depth = 0;
-            this.txtNomuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtNomuser.HideSelection = true;
-            this.txtNomuser.LeadingIcon = null;
-            this.txtNomuser.Location = new System.Drawing.Point(322, 206);
-            this.txtNomuser.MaxLength = 32767;
-            this.txtNomuser.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtNomuser.Name = "txtNomuser";
-            this.txtNomuser.PasswordChar = '\0';
-            this.txtNomuser.PrefixSuffixText = null;
-            this.txtNomuser.ReadOnly = false;
-            this.txtNomuser.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtNomuser.SelectedText = "";
-            this.txtNomuser.SelectionLength = 0;
-            this.txtNomuser.SelectionStart = 0;
-            this.txtNomuser.ShortcutsEnabled = true;
-            this.txtNomuser.Size = new System.Drawing.Size(250, 48);
-            this.txtNomuser.TabIndex = 2;
-            this.txtNomuser.TabStop = false;
-            this.txtNomuser.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtNomuser.TrailingIcon = null;
-            this.txtNomuser.UseSystemPasswordChar = false;
+            this.txtNumeroCedula.AnimateReadOnly = false;
+            this.txtNumeroCedula.BackColor = System.Drawing.SystemColors.Control;
+            this.txtNumeroCedula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.txtNumeroCedula.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtNumeroCedula.Depth = 0;
+            this.txtNumeroCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNumeroCedula.HideSelection = true;
+            this.txtNumeroCedula.LeadingIcon = null;
+            this.txtNumeroCedula.Location = new System.Drawing.Point(322, 206);
+            this.txtNumeroCedula.MaxLength = 32767;
+            this.txtNumeroCedula.MouseState = MaterialSkin.MouseState.OUT;
+            this.txtNumeroCedula.Name = "txtNumeroCedula";
+            this.txtNumeroCedula.PasswordChar = '\0';
+            this.txtNumeroCedula.PrefixSuffixText = null;
+            this.txtNumeroCedula.ReadOnly = false;
+            this.txtNumeroCedula.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtNumeroCedula.SelectedText = "";
+            this.txtNumeroCedula.SelectionLength = 0;
+            this.txtNumeroCedula.SelectionStart = 0;
+            this.txtNumeroCedula.ShortcutsEnabled = true;
+            this.txtNumeroCedula.Size = new System.Drawing.Size(250, 48);
+            this.txtNumeroCedula.TabIndex = 2;
+            this.txtNumeroCedula.TabStop = false;
+            this.txtNumeroCedula.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtNumeroCedula.TrailingIcon = null;
+            this.txtNumeroCedula.UseSystemPasswordChar = false;
             // 
             // txtContraseña
             // 
@@ -230,7 +230,7 @@
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblNomuser);
             this.Controls.Add(this.txtContraseña);
-            this.Controls.Add(this.txtNomuser);
+            this.Controls.Add(this.txtNumeroCedula);
             this.Controls.Add(this.btnIniciarsesion);
             this.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
@@ -245,7 +245,7 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialButton btnIniciarsesion;
-        private MaterialSkin.Controls.MaterialTextBox2 txtNomuser;
+        private MaterialSkin.Controls.MaterialTextBox2 txtNumeroCedula;
         private MaterialSkin.Controls.MaterialTextBox2 txtContraseña;
         private MaterialSkin.Controls.MaterialLabel lblNomuser;
         private MaterialSkin.Controls.MaterialLabel lblContraseña;

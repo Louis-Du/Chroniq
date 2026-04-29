@@ -31,12 +31,12 @@ namespace src.Controlador
         /// Como lo llama la Vista (FormLogin):
         ///   controlador.IniciarSesion(txtNomuser.Text, txtContraseña.Text, this);
         /// </summary>
-        public void IniciarSesion(string nombreUser, string passwordUser, Form formularioActual)
+        public void IniciarSesion(int numeroCedula, string passwordUser, Form formularioActual)
         {
             try
             {
                 // PASO 1: Validar campos vacíos.
-                if (string.IsNullOrWhiteSpace(nombreUser) || string.IsNullOrWhiteSpace(passwordUser))
+                if (numeroCedula <= 0 || string.IsNullOrWhiteSpace(passwordUser))
                 {
                     MessageBox.Show("Por favor, ingresa el nombre de usuario y la contraseña.",
                         "Campos requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -45,7 +45,7 @@ namespace src.Controlador
 
                 // PASO 2: Consultar el Modelo.
                 // Llamada a: Modelo/UsuarioModelo.cs → BuscarPorCredenciales(...)
-                Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(nombreUser, passwordUser);
+                Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(numeroCedula, passwordUser);
 
             // PASO 3: Lógica del negocio sobre el resultado.
             if (usuarioEncontrado == null)
