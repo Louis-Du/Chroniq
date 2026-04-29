@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace src.Vista
 {
-    public partial class Form1 : Form
+    public partial class FormActualizarEvento : Form
     {
-        public Form1()
+        public FormActualizarEvento()
         {
             InitializeComponent();
         }

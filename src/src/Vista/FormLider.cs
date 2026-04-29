@@ -69,5 +69,10 @@ namespace src.Vista
             this.Close();
             new FormLogin().Show(); // Cierra el formulario actual y vuelve al Login
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

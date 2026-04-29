@@ -105,7 +105,7 @@
             this.txtContraseña.MaxLength = 32767;
             this.txtContraseña.MouseState = MaterialSkin.MouseState.OUT;
             this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.PasswordChar = '\0';
+            this.txtContraseña.PasswordChar = '*';
             this.txtContraseña.PrefixSuffixText = null;
             this.txtContraseña.ReadOnly = false;
             this.txtContraseña.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 550);
+            this.ClientSize = new System.Drawing.Size(896, 589);
             this.Controls.Add(this.swtOscuro);
             this.Controls.Add(this.btnSalirlogin);
             this.Controls.Add(this.materialLabel4);
