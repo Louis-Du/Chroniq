@@ -39,6 +39,7 @@
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.materialDrawer1 = new MaterialSkin.Controls.MaterialDrawer();
             this.SuspendLayout();
             // 
             // materialDivider2
@@ -60,7 +61,7 @@
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(197, 33);
+            this.materialLabel1.Location = new System.Drawing.Point(16, 44);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(221, 29);
@@ -132,7 +133,7 @@
             this.materialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialTextBox2.LeadingIcon = null;
-            this.materialTextBox2.Location = new System.Drawing.Point(230, 89);
+            this.materialTextBox2.Location = new System.Drawing.Point(230, 104);
             this.materialTextBox2.MaxLength = 50;
             this.materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox2.Multiline = false;
@@ -151,7 +152,7 @@
             this.materialTextBox3.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialTextBox3.LeadingIcon = null;
-            this.materialTextBox3.Location = new System.Drawing.Point(230, 185);
+            this.materialTextBox3.Location = new System.Drawing.Point(230, 182);
             this.materialTextBox3.MaxLength = 50;
             this.materialTextBox3.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox3.Multiline = false;
@@ -186,6 +187,26 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 18;
             // 
+            // materialDrawer1
+            // 
+            this.materialDrawer1.AutoHide = false;
+            this.materialDrawer1.AutoShow = false;
+            this.materialDrawer1.BackColor = System.Drawing.SystemColors.Control;
+            this.materialDrawer1.BackgroundWithAccent = false;
+            this.materialDrawer1.BaseTabControl = null;
+            this.materialDrawer1.Depth = 0;
+            this.materialDrawer1.HighlightWithAccent = true;
+            this.materialDrawer1.IndicatorWidth = 0;
+            this.materialDrawer1.IsOpen = false;
+            this.materialDrawer1.Location = new System.Drawing.Point(42, 89);
+            this.materialDrawer1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialDrawer1.Name = "materialDrawer1";
+            this.materialDrawer1.ShowIconsWhenHidden = false;
+            this.materialDrawer1.Size = new System.Drawing.Size(508, 338);
+            this.materialDrawer1.TabIndex = 19;
+            this.materialDrawer1.Text = "materialDrawer1";
+            this.materialDrawer1.UseColors = false;
+            // 
             // FormCrearEvento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +223,7 @@
             this.Controls.Add(this.txtNom);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.materialDivider2);
+            this.Controls.Add(this.materialDrawer1);
             this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.StatusAndActionBar_None;
             this.Name = "FormCrearEvento";
             this.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
@@ -223,5 +245,6 @@
         private MaterialSkin.Controls.MaterialDivider materialDivider1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private MaterialSkin.Controls.MaterialDrawer materialDrawer1;
     }
 }

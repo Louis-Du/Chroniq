@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
+            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
+            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
+            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
+            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
             this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -36,11 +41,6 @@
             this.tipoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
-            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
-            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
-            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
-            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,41 +63,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(721, 208);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // _id
-            // 
-            this._id.HeaderText = "ID";
-            this._id.Name = "_id";
-            // 
-            // codigoEvent
-            // 
-            this.codigoEvent.HeaderText = "Codigo";
-            this.codigoEvent.Name = "codigoEvent";
-            // 
-            // nombreEvent
-            // 
-            this.nombreEvent.HeaderText = "Nombre ";
-            this.nombreEvent.Name = "nombreEvent";
-            // 
-            // creadoPor
-            // 
-            this.creadoPor.HeaderText = "Creado por";
-            this.creadoPor.Name = "creadoPor";
-            // 
-            // tipoEvent
-            // 
-            this.tipoEvent.HeaderText = "Tipo";
-            this.tipoEvent.Name = "tipoEvent";
-            // 
-            // fechahoraIniEvent
-            // 
-            this.fechahoraIniEvent.HeaderText = "Hora Inicio";
-            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
-            // 
-            // fechahoraFinEvent
-            // 
-            this.fechahoraFinEvent.HeaderText = "Hora Fin";
-            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
             // 
             // btnVolver
             // 
@@ -190,6 +155,41 @@
             this.lblNomlid.Size = new System.Drawing.Size(107, 19);
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
+            // 
+            // _id
+            // 
+            this._id.HeaderText = "ID";
+            this._id.Name = "_id";
+            // 
+            // codigoEvent
+            // 
+            this.codigoEvent.HeaderText = "Codigo";
+            this.codigoEvent.Name = "codigoEvent";
+            // 
+            // nombreEvent
+            // 
+            this.nombreEvent.HeaderText = "Nombre ";
+            this.nombreEvent.Name = "nombreEvent";
+            // 
+            // creadoPor
+            // 
+            this.creadoPor.HeaderText = "Creado por";
+            this.creadoPor.Name = "creadoPor";
+            // 
+            // tipoEvent
+            // 
+            this.tipoEvent.HeaderText = "Tipo";
+            this.tipoEvent.Name = "tipoEvent";
+            // 
+            // fechahoraIniEvent
+            // 
+            this.fechahoraIniEvent.HeaderText = "Fecha Hora inicio";
+            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
+            // 
+            // fechahoraFinEvent
+            // 
+            this.fechahoraFinEvent.HeaderText = "Fecha Hora Fin";
+            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
             // 
             // FormLider
             // 
