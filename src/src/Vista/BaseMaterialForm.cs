@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace src.Vista
 {
@@ -13,20 +14,14 @@ namespace src.Vista
     {
         public BaseMaterialForm()
         {
-            if (!DesignMode)
-            {  // Configuramos el gestor de temas una sola vez
-                var materialSkinManager = MaterialSkinManager.Instance;
-                materialSkinManager.AddFormToManage(this);
+            {
+                if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
+                {
+                    var materialSkinManager = MaterialSkinManager.Instance;
 
-                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-
-                materialSkinManager.ColorScheme = new ColorScheme(
-                    Primary.Indigo600,
-                    Primary.Indigo800,
-                    Primary.Indigo100,
-                    Accent.Pink200,
-                    TextShade.WHITE
-                );  
+                    materialSkinManager.AddFormToManage(this);
+                    materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+                }
             }
         }
 

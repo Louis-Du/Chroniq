@@ -14,7 +14,6 @@ namespace src.Vista
         // La Vista no lo usa directamente, solo lo conserva.
         private readonly string _idLider;
 
-        private readonly EventoControlador _eventoControlador;
 
         /// <summary>
         /// Constructor: recibe nombre e Id del líder autenticado.
@@ -29,7 +28,7 @@ namespace src.Vista
             InitializeComponent();
 
             _idLider = idUsuario;
-            _eventoControlador = new EventoControlador();
+            //_eventoControlador = new EventoControlador();
 
             this.Text = $"Chroniq - Líder: {nombreUsuario}";
             lblNomlid.Text = nombreUsuario;
@@ -58,11 +57,11 @@ namespace src.Vista
             // Llamada a: Controlador/EventoControlador.cs → ConsultarEventos()
             // Devuelve List<Evento> con los eventos cuya fecha de inicio
             // es superior a la fecha y hora actual.
-            var eventos = _eventoControlador.ConsultarEventos();
+            //var eventos = _eventoControlador.ConsultarEventos();
             // Asignamos la lista al DataGridView.
             // El grid mostrará automáticamente las propiedades de Evento
             // como columnas: NombreEvent, TipoEvent, FechahoraIniEvent, etc.
-            dgvEventos.DataSource = eventos;
+            //dgvEventos.DataSource = eventos;
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
