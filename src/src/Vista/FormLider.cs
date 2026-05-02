@@ -65,7 +65,9 @@ namespace src.Vista
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-
+            FormCrearEvento frm = new FormCrearEvento(_idLider);
+            frm.FormClosed += (s, args) => CargarEventos();
+            frm.Show();
         }
     }
 }

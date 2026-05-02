@@ -156,10 +156,7 @@
     <Compile Include="Controlador\EventoControlador.cs" />
     <Compile Include="Controlador\LoginControlador.cs" />
     <Compile Include="Modelo\Conexion.cs" />
-<<<<<<< HEAD
     <Compile Include="Modelo\Evento.cs" />
-=======
->>>>>>> 12ed9fb (feat: creacion de EventoModelo.cs con la funcion para guardar evento)
     <Compile Include="Modelo\EventoModelo.cs" />
     <Compile Include="Modelo\UsuarioModelo.cs" />
     <Compile Include="Program.cs" />
