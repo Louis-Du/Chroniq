@@ -28,41 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvEventos = new System.Windows.Forms.DataGridView();
             this.btnVolver = new MaterialSkin.Controls.MaterialButton();
             this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
             this.btnCrear = new MaterialSkin.Controls.MaterialButton();
             this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
             this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
-            this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creadoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.creadoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvEventos
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this._id,
-            this.codigoEvent,
+            this.dgvEventos.AllowUserToAddRows = false;
+            this.dgvEventos.AllowUserToDeleteRows = false;
+            this.dgvEventos.AllowUserToOrderColumns = true;
+            this.dgvEventos.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvEventos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvEventos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEventos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombreEvent,
-            this.creadoPor,
             this.tipoEvent,
             this.fechahoraIniEvent,
-            this.fechahoraFinEvent});
-            this.dataGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dataGridView1.Location = new System.Drawing.Point(42, 163);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(721, 208);
-            this.dataGridView1.TabIndex = 1;
+            this.fechahoraFinEvent,
+            this.creadoPor});
+            this.dgvEventos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvEventos.Location = new System.Drawing.Point(31, 159);
+            this.dgvEventos.Name = "dgvEventos";
+            this.dgvEventos.ReadOnly = true;
+            this.dgvEventos.Size = new System.Drawing.Size(738, 208);
+            this.dgvEventos.TabIndex = 1;
             // 
             // btnVolver
             // 
@@ -127,6 +127,7 @@
             this.btnCrear.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCrear.UseAccentColor = false;
             this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // lblBienv
             // 
@@ -156,40 +157,39 @@
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
             // 
-            // _id
-            // 
-            this._id.HeaderText = "ID";
-            this._id.Name = "_id";
-            // 
-            // codigoEvent
-            // 
-            this.codigoEvent.HeaderText = "Codigo";
-            this.codigoEvent.Name = "codigoEvent";
-            // 
             // nombreEvent
             // 
             this.nombreEvent.HeaderText = "Nombre ";
             this.nombreEvent.Name = "nombreEvent";
-            // 
-            // creadoPor
-            // 
-            this.creadoPor.HeaderText = "Creado por";
-            this.creadoPor.Name = "creadoPor";
+            this.nombreEvent.ReadOnly = true;
+            this.nombreEvent.Width = 150;
             // 
             // tipoEvent
             // 
             this.tipoEvent.HeaderText = "Tipo";
             this.tipoEvent.Name = "tipoEvent";
+            this.tipoEvent.ReadOnly = true;
             // 
             // fechahoraIniEvent
             // 
             this.fechahoraIniEvent.HeaderText = "Fecha Hora inicio";
             this.fechahoraIniEvent.Name = "fechahoraIniEvent";
+            this.fechahoraIniEvent.ReadOnly = true;
+            this.fechahoraIniEvent.Width = 150;
             // 
             // fechahoraFinEvent
             // 
             this.fechahoraFinEvent.HeaderText = "Fecha Hora Fin";
             this.fechahoraFinEvent.Name = "fechahoraFinEvent";
+            this.fechahoraFinEvent.ReadOnly = true;
+            this.fechahoraFinEvent.Width = 150;
+            // 
+            // creadoPor
+            // 
+            this.creadoPor.HeaderText = "Creado por";
+            this.creadoPor.Name = "creadoPor";
+            this.creadoPor.ReadOnly = true;
+            this.creadoPor.Width = 150;
             // 
             // FormLider
             // 
@@ -201,29 +201,27 @@
             this.Controls.Add(this.btnCrear);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvEventos);
             this.Name = "FormLider";
             this.Text = "FormLider";
             this.Load += new System.EventHandler(this.FormLider_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvEventos;
         private MaterialSkin.Controls.MaterialButton btnVolver;
         private MaterialSkin.Controls.MaterialButton btnActualizar;
         private MaterialSkin.Controls.MaterialButton btnCrear;
         private MaterialSkin.Controls.MaterialLabel lblBienv;
         private MaterialSkin.Controls.MaterialLabel lblNomlid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreEvent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creadoPor;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechahoraIniEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechahoraFinEvent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn creadoPor;
     }
 }
