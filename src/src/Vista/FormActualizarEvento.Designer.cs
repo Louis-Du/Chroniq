@@ -67,7 +67,7 @@
             this.txtTipoEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtTipoEvent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTipoEvent.Depth = 0;
-            this.txtTipoEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTipoEvent.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTipoEvent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtTipoEvent.LeadingIcon = null;
             this.txtTipoEvent.Location = new System.Drawing.Point(241, 193);
@@ -86,7 +86,7 @@
             this.txtNombreEvent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.txtNombreEvent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNombreEvent.Depth = 0;
-            this.txtNombreEvent.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNombreEvent.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtNombreEvent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txtNombreEvent.LeadingIcon = null;
             this.txtNombreEvent.Location = new System.Drawing.Point(241, 127);
@@ -178,6 +178,7 @@
             this.btnGuardarCambio.TabIndex = 25;
             this.btnGuardarCambio.Text = "Guardar cambios";
             this.btnGuardarCambio.UseVisualStyleBackColor = true;
+            this.btnGuardarCambio.Click += new System.EventHandler(this.btnGuardarCambio_Click);
             // 
             // btnCancelar
             // 

@@ -72,7 +72,36 @@ namespace src.Vista
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            // 1. Validar si hay registros en el DataGridView
+            if (dataGridView1.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay eventos para actualizar");
+                return;
+            }
 
+            // 2. Validar que haya una fila seleccionada
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor seleccione un evento");
+                return;
+            }
+
+            //  3. Capturar datos de la fila seleccionada
+            var fila = dataGridView1.CurrentRow;
+
+            string _id = fila.Cells["_id"].Value.ToString();
+            int codigo = int.Parse(fila.Cells["codigoEvent"].Value.ToString());
+            string nombre = fila.Cells["nombreEvent"].Value.ToString();
+            string tipo = fila.Cells["tipoEvent"].Value.ToString();
+            string fechaInicio = fila.Cells["fechaHoraInicio"].Value.ToString();
+            string fechaFin = fila.Cells["fechaHoraFin"].Value.ToString();
+
+            // 4. Llamar controlador
+            EventoControlador controlador = new EventoControlador();
+
+            controlador.AbrirFormularioActualizar(
+            _id, codigo, nombre, tipo, fechaInicio, fechaFin
+            );
         }
     }
 }

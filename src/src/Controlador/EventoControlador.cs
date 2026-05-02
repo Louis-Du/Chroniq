@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using src.Modelo; // RED: EventoModelo aún no existe.
+using src.Vista;   // Para mostrar MessageBox desde el Controlador, aunque no es lo ideal en una arquitectura estricta MVC, es aceptable para esta etapa inicial del proyecto. En etapas posteriores se podría refactorizar para que el Controlador retorne resultados y la Vista decida cómo mostrarlos.
 
 namespace src.Controlador
 {
@@ -111,7 +112,7 @@ namespace src.Controlador
         /// Retorna lista vacía si no hay eventos, nunca null,
         /// para que la Vista no tenga que verificar antes de asignar al grid.
         /// </summary>
-        
+
         /*
         public List<Evento> ConsultarEventos()
         {
@@ -139,5 +140,14 @@ namespace src.Controlador
             return eventos;
         }
         */
+
+        public void AbrirFormularioActualizar(string id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
+        {
+            FormActualizarEvento form = new FormActualizarEvento(
+                id, codigo, nombre, tipo, fechaInicio, fechaFin
+            );
+
+            form.ShowDialog();
+        }
     }
 }
