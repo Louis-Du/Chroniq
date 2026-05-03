@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.dgvEventos = new System.Windows.Forms.DataGridView();
-            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
-            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
-            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
-            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
-            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
             this.nombreEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creadoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
+            this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
+            this.btnCrear = new MaterialSkin.Controls.MaterialButton();
+            this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
+            this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
+            this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +58,49 @@
             this.tipoEvent,
             this.fechahoraIniEvent,
             this.fechahoraFinEvent,
-            this.creadoPor});
+            this.creadoPor,
+            this._id,
+            this.codigoEvent});
             this.dgvEventos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dgvEventos.Location = new System.Drawing.Point(31, 159);
             this.dgvEventos.Name = "dgvEventos";
             this.dgvEventos.ReadOnly = true;
             this.dgvEventos.Size = new System.Drawing.Size(738, 208);
             this.dgvEventos.TabIndex = 1;
+            // 
+            // nombreEvent
+            // 
+            this.nombreEvent.HeaderText = "Nombre ";
+            this.nombreEvent.Name = "nombreEvent";
+            this.nombreEvent.ReadOnly = true;
+            this.nombreEvent.Width = 150;
+            // 
+            // tipoEvent
+            // 
+            this.tipoEvent.HeaderText = "Tipo";
+            this.tipoEvent.Name = "tipoEvent";
+            this.tipoEvent.ReadOnly = true;
+            // 
+            // fechahoraIniEvent
+            // 
+            this.fechahoraIniEvent.HeaderText = "Fecha Hora inicio";
+            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
+            this.fechahoraIniEvent.ReadOnly = true;
+            this.fechahoraIniEvent.Width = 150;
+            // 
+            // fechahoraFinEvent
+            // 
+            this.fechahoraFinEvent.HeaderText = "Fecha Hora Fin";
+            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
+            this.fechahoraFinEvent.ReadOnly = true;
+            this.fechahoraFinEvent.Width = 150;
+            // 
+            // creadoPor
+            // 
+            this.creadoPor.HeaderText = "Creado por";
+            this.creadoPor.Name = "creadoPor";
+            this.creadoPor.ReadOnly = true;
+            this.creadoPor.Width = 150;
             // 
             // btnVolver
             // 
@@ -158,39 +196,19 @@
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
             // 
-            // nombreEvent
+            // _id
             // 
-            this.nombreEvent.HeaderText = "Nombre ";
-            this.nombreEvent.Name = "nombreEvent";
-            this.nombreEvent.ReadOnly = true;
-            this.nombreEvent.Width = 150;
+            this._id.HeaderText = "id";
+            this._id.Name = "_id";
+            this._id.ReadOnly = true;
+            this._id.Visible = false;
             // 
-            // tipoEvent
+            // codigoEvent
             // 
-            this.tipoEvent.HeaderText = "Tipo";
-            this.tipoEvent.Name = "tipoEvent";
-            this.tipoEvent.ReadOnly = true;
-            // 
-            // fechahoraIniEvent
-            // 
-            this.fechahoraIniEvent.HeaderText = "Fecha Hora inicio";
-            this.fechahoraIniEvent.Name = "fechahoraIniEvent";
-            this.fechahoraIniEvent.ReadOnly = true;
-            this.fechahoraIniEvent.Width = 150;
-            // 
-            // fechahoraFinEvent
-            // 
-            this.fechahoraFinEvent.HeaderText = "Fecha Hora Fin";
-            this.fechahoraFinEvent.Name = "fechahoraFinEvent";
-            this.fechahoraFinEvent.ReadOnly = true;
-            this.fechahoraFinEvent.Width = 150;
-            // 
-            // creadoPor
-            // 
-            this.creadoPor.HeaderText = "Creado por";
-            this.creadoPor.Name = "creadoPor";
-            this.creadoPor.ReadOnly = true;
-            this.creadoPor.Width = 150;
+            this.codigoEvent.HeaderText = "codigoEvent";
+            this.codigoEvent.Name = "codigoEvent";
+            this.codigoEvent.ReadOnly = true;
+            this.codigoEvent.Visible = false;
             // 
             // FormLider
             // 
@@ -224,5 +242,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechahoraIniEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechahoraFinEvent;
         private System.Windows.Forms.DataGridViewTextBoxColumn creadoPor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn _id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoEvent;
     }
 }

@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using src.Modelo; 
+using src.Modelo;
+using src.Vista;
 
 namespace src.Controlador
 {
