@@ -56,7 +56,7 @@ namespace src.Controlador
                 MessageBox.Show("No se pudo registrar el evento. El horario seleccionado ya está ocupado.",
                     "Conflicto de horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
- 
+
         public List<Evento> ConsultarEventos()
         {
             // Convertimos la fecha actual al mismo formato string de la BD
@@ -70,6 +70,15 @@ namespace src.Controlador
                     "Sin eventos", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return eventos;
+        }
+       
+        public void AbrirFormularioActualizar(string id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
+        {
+            FormActualizarEvento form = new FormActualizarEvento(
+                id, codigo, nombre, tipo, fechaInicio, fechaFin
+            );
+
+            form.ShowDialog();
         }
     }
 }
