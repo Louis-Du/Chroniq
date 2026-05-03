@@ -17,7 +17,7 @@ namespace src.Vista
         /// </summary>
         public FormLogin()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             _loginControlador = new LoginControlador();
         }
 

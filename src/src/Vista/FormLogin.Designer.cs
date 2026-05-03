@@ -48,7 +48,7 @@
             this.btnIniciarsesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnIniciarsesion.HighEmphasis = true;
             this.btnIniciarsesion.Icon = null;
-            this.btnIniciarsesion.Location = new System.Drawing.Point(378, 413);
+            this.btnIniciarsesion.Location = new System.Drawing.Point(394, 413);
             this.btnIniciarsesion.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnIniciarsesion.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnIniciarsesion.Name = "btnIniciarsesion";
@@ -68,10 +68,10 @@
             this.txtNumeroCedula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.txtNumeroCedula.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtNumeroCedula.Depth = 0;
-            this.txtNumeroCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtNumeroCedula.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumeroCedula.HideSelection = true;
             this.txtNumeroCedula.LeadingIcon = null;
-            this.txtNumeroCedula.Location = new System.Drawing.Point(322, 206);
+            this.txtNumeroCedula.Location = new System.Drawing.Point(378, 206);
             this.txtNumeroCedula.MaxLength = 32767;
             this.txtNumeroCedula.MouseState = MaterialSkin.MouseState.OUT;
             this.txtNumeroCedula.Name = "txtNumeroCedula";
@@ -98,10 +98,10 @@
             this.txtContraseña.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.txtContraseña.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
             this.txtContraseña.Depth = 0;
-            this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtContraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContraseña.HideSelection = true;
             this.txtContraseña.LeadingIcon = null;
-            this.txtContraseña.Location = new System.Drawing.Point(322, 292);
+            this.txtContraseña.Location = new System.Drawing.Point(378, 294);
             this.txtContraseña.MaxLength = 32767;
             this.txtContraseña.MouseState = MaterialSkin.MouseState.OUT;
             this.txtContraseña.Name = "txtContraseña";
@@ -127,7 +127,7 @@
             this.lblNomuser.Depth = 0;
             this.lblNomuser.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblNomuser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNomuser.Location = new System.Drawing.Point(168, 222);
+            this.lblNomuser.Location = new System.Drawing.Point(238, 224);
             this.lblNomuser.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblNomuser.Name = "lblNomuser";
             this.lblNomuser.Size = new System.Drawing.Size(129, 19);
@@ -141,7 +141,7 @@
             this.lblContraseña.Depth = 0;
             this.lblContraseña.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblContraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblContraseña.Location = new System.Drawing.Point(168, 321);
+            this.lblContraseña.Location = new System.Drawing.Point(238, 309);
             this.lblContraseña.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblContraseña.Name = "lblContraseña";
             this.lblContraseña.Size = new System.Drawing.Size(82, 19);
@@ -172,7 +172,7 @@
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.SubtleEmphasis;
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(355, 373);
+            this.materialLabel4.Location = new System.Drawing.Point(366, 373);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(179, 14);
@@ -188,7 +188,7 @@
             this.btnSalirlogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSalirlogin.HighEmphasis = true;
             this.btnSalirlogin.Icon = null;
-            this.btnSalirlogin.Location = new System.Drawing.Point(411, 461);
+            this.btnSalirlogin.Location = new System.Drawing.Point(425, 461);
             this.btnSalirlogin.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnSalirlogin.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSalirlogin.Name = "btnSalirlogin";
@@ -207,7 +207,7 @@
             this.swtOscuro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.swtOscuro.Depth = 0;
             this.swtOscuro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.swtOscuro.Location = new System.Drawing.Point(690, 92);
+            this.swtOscuro.Location = new System.Drawing.Point(369, 166);
             this.swtOscuro.Margin = new System.Windows.Forms.Padding(0);
             this.swtOscuro.MouseLocation = new System.Drawing.Point(-1, -1);
             this.swtOscuro.MouseState = MaterialSkin.MouseState.HOVER;
@@ -223,7 +223,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 589);
+            this.ClientSize = new System.Drawing.Size(928, 606);
             this.Controls.Add(this.swtOscuro);
             this.Controls.Add(this.btnSalirlogin);
             this.Controls.Add(this.materialLabel4);
@@ -237,7 +237,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.Name = "FormLogin";
             this.Text = "Chroniq";
-            this.TransparencyKey = System.Drawing.Color.Black;
             this.ResumeLayout(false);
             this.PerformLayout();
 
