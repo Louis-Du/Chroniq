@@ -24,8 +24,11 @@ namespace src.Vista
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            _eventoControlador.RegistrarEvento(materialTextBox2.Text.Trim(), materialTextBox3.Text.Trim(), dateTimePicker1.Value, dateTimePicker2.Value, _idLider);
-            this.Close();
+            bool exitoso = _eventoControlador.RegistrarEvento(materialTextBox2.Text.Trim(), materialTextBox3.Text.Trim(), dateTimePicker1.Value, dateTimePicker2.Value, _idLider);
+            if (exitoso == true)
+            {
+                this.Close();
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

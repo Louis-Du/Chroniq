@@ -19,27 +19,27 @@ namespace src.Controlador
             _eventoModelo = new EventoModelo();
         }
 
-        public void RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
+        public bool RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
         {
             if (string.IsNullOrWhiteSpace(nombreEvent))
             {
                 MessageBox.Show("El nombre del evento es obligatorio.",
                     "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
 
             if (string.IsNullOrWhiteSpace(tipoEvent))
             {
                 MessageBox.Show("Debes seleccionar un tipo de evento.",
                     "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
 
             if (fechaHoraFin <= fechaHoraInicio)
             {
                 MessageBox.Show("La fecha y hora de fin debe ser posterior a la de inicio.",
                     "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
 
             // Convertir DateTime a string con el formato de la BD.
@@ -51,11 +51,17 @@ namespace src.Controlador
                 nombreEvent, tipoEvent, fechaIniStr, fechaFinStr, idLider);
 
             if (guardadoExitoso)
+            {
                 MessageBox.Show($"El evento '{nombreEvent}' fue registrado correctamente.",
                     "Evento registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
             else
+            {
                 MessageBox.Show("No se pudo registrar el evento. El horario seleccionado ya está ocupado.",
                     "Conflicto de horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
         }
 
         public List<Evento> ConsultarEventos()
