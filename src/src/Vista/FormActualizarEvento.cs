@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using src.Controlador; // Para usar EventoControlador
 namespace src.Vista
 {
-    public partial class FormActualizarEvento : Form
+    public partial class FormActualizarEvento : BaseMaterialForm
     {
         private ObjectId _idEvento;
         public FormActualizarEvento(string _id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
@@ -27,11 +27,14 @@ namespace src.Vista
             dtpFechaHoraFin.Value = DateTime.Parse(fechaFin);
         }
 
-        private void btnGuardarCambio_Click(object sender, EventArgs e)
+        private void btnAcept_Click(object sender, EventArgs e)
         {
-            // Llamar controlador
+            //// Llamar controlador
             EventoControlador controlador = new EventoControlador();
             controlador.RegistrarEvento(txtNombreEvent.Text, txtTipoEvent.Text, dtpFechaHoraInicio.Value, dtpFechaHoraFin.Value, _idEvento.ToString());
         }
+
+
+
     }
 }

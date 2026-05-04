@@ -1,8 +1,9 @@
-﻿
-using System;
-using System.Windows.Forms;
-using MaterialSkin;
+﻿using MaterialSkin;
 using src.Controlador;
+using System;
+using System.Drawing;
+using System.Reflection.Emit;
+using System.Windows.Forms;
 
 namespace src.Vista
 {
@@ -19,6 +20,7 @@ namespace src.Vista
         {
             InitializeComponent();
             _loginControlador = new LoginControlador();
+
         }
 
         private void swtOscuro_CheckedChanged(object sender, EventArgs e)
