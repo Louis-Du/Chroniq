@@ -84,6 +84,13 @@ namespace src.Vista
             //  3. Capturar datos de la fila seleccionada
             var fila = dgvEventos.CurrentRow;
 
+            // 4. Validar que la fila tenga un ID
+            if (fila.Cells["_id"].Value == null)
+            {
+                MessageBox.Show("Fila inválida");
+                return;
+            }
+
             string _id = fila.Cells["_id"].Value.ToString();
             int codigo = int.Parse(fila.Cells["codigoEvent"].Value.ToString());
             string nombre = fila.Cells["NombreEvent"].Value.ToString();
@@ -91,12 +98,14 @@ namespace src.Vista
             string fechaInicio = fila.Cells["FechahoraIniEvent"].Value.ToString();
             string fechaFin = fila.Cells["FechahoraFinEvent"].Value.ToString();
 
-            // 4. Llamar controlador
-            EventoControlador controlador = new EventoControlador();
 
-            controlador.AbrirFormularioActualizar(
-            _id, codigo, nombre, tipo, fechaInicio, fechaFin
+            FormActualizarEvento form = new FormActualizarEvento(
+                _id, codigo, nombre, tipo, fechaInicio, fechaFin
             );
+
+            form.FormClosed += (s, args) => CargarEventos();
+
+            form.Show();
         }
 
         private void btnCrear_Click(object sender, EventArgs e)

@@ -29,9 +29,42 @@ namespace src.Vista
 
         private void btnAcept_Click(object sender, EventArgs e)
         {
-            //// Llamar controlador
+            // 🔴 Validaciones básicas
+            if (string.IsNullOrWhiteSpace(txtNombreEvent.Text) ||
+                string.IsNullOrWhiteSpace(txtTipoEvent.Text))
+            {
+                MessageBox.Show("Complete todos los campos");
+                return;
+            }
+
+            if (dtpFechaHoraFin.Value < dtpFechaHoraInicio.Value)
+            {
+                MessageBox.Show("La fecha final no puede ser menor a la inicial");
+                return;
+            }
+
+            // 📦 Obtener datos del formulario
+            string nombre = txtNombreEvent.Text;
+            string tipo = txtTipoEvent.Text;
+            string fechaIni = dtpFechaHoraInicio.Value.ToString("yyyy-MM-dd");
+            string fechaFin = dtpFechaHoraFin.Value.ToString("yyyy-MM-dd");
+
+            // Llamar controlador
             EventoControlador controlador = new EventoControlador();
-            controlador.RegistrarEvento(txtNombreEvent.Text, txtTipoEvent.Text, dtpFechaHoraInicio.Value, dtpFechaHoraFin.Value, _idEvento.ToString());
+
+            bool actualizado = controlador.ActualizarEvento(
+                _idEvento, nombre, tipo, fechaIni, fechaFin
+            );
+
+            if (actualizado)
+            {
+                MessageBox.Show("Evento actualizado correctamente");
+                this.Close(); // cerrar form
+            }
+            else
+            {
+                MessageBox.Show("Error al actualizar el evento");
+            }
         }
 
 

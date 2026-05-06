@@ -1,8 +1,9 @@
+using MongoDB.Bson;
+using src.Modelo;
+using src.Vista;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using src.Modelo;
-using src.Vista;
 
 namespace src.Controlador
 {
@@ -84,8 +85,15 @@ namespace src.Controlador
             FormActualizarEvento form = new FormActualizarEvento(
                 id, codigo, nombre, tipo, fechaInicio, fechaFin
             );
-
             form.ShowDialog();
         }
+
+        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+        {
+            EventoModelo modelo = new EventoModelo();
+
+            return modelo.ActualizarEvento(id, nombre, tipo, fechaIni, fechaFin);
+        }
+
     }
 }

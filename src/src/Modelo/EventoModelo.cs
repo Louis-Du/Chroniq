@@ -33,9 +33,9 @@ namespace src.Modelo
                 var documento = new BsonDocument
                 {
                     { "codigoEvent",       codigoEvent },
-                    { "nombreEvent",       nombreEvent },   
-                    { "tipoevent",         tipoEvent },         
-                    { "fechahoraIniEvent", fechahoraIniEvent }, 
+                    { "nombreEvent",       nombreEvent },
+                    { "tipoevent",         tipoEvent },
+                    { "fechahoraIniEvent", fechahoraIniEvent },
                     { "fechahoraFinEvent", fechahoraFinEvent },
                     { "creadoPor",         new ObjectId(idLider) },
                     { "invitados",         new BsonArray() }
@@ -80,5 +80,34 @@ namespace src.Modelo
                 return new List<Evento>();
             }
         }
+    
+
+     public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<BsonDocument>("Eventos");
+
+                //  Filtro por ID
+                var filtro = Builders<BsonDocument>.Filter.Eq("_id", id);
+
+                //  Campos a actualizar
+                var update = Builders<BsonDocument>.Update
+                    .Set("nombreEvent", nombre)
+                    .Set("tipoEvent", tipo)
+                    .Set("fechahoraIniEvent", fechaIni)
+                    .Set("fechahoraFinEvent", fechaFin);
+
+                //  Ejecutar actualización
+                var resultado = collection.UpdateOne(filtro, update);
+
+                //  Si modificó al menos 1 documento
+                return resultado.ModifiedCount > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        } }
     }
-}
