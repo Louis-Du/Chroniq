@@ -29,7 +29,7 @@ namespace src.Vista
 
         private void btnAcept_Click(object sender, EventArgs e)
         {
-            // 🔴 Validaciones básicas
+            // Validaciones básicas
             if (string.IsNullOrWhiteSpace(txtNombreEvent.Text) ||
                 string.IsNullOrWhiteSpace(txtTipoEvent.Text))
             {
@@ -43,7 +43,7 @@ namespace src.Vista
                 return;
             }
 
-            // 📦 Obtener datos del formulario
+            //  Obtener datos del formulario
             string nombre = txtNombreEvent.Text;
             string tipo = txtTipoEvent.Text;
             string fechaIni = dtpFechaHoraInicio.Value.ToString("yyyy-MM-dd HH:mm:ss");
@@ -67,7 +67,12 @@ namespace src.Vista
             }
         }
 
-
-
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("¿Está seguro de que desea cancelar?", "Confirmar cancelación", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
     }
 }
