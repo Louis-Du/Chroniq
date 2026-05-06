@@ -50,9 +50,10 @@ namespace src.Vista
             dgvEventos.AutoGenerateColumns = false;
             dgvEventos.DataSource = eventos;
 
-            _id.DataPropertyName = "id";
-            codigoEvent.DataPropertyName = "codigoEvent";
-            creadoPor.DataPropertyName = "creadoPor";
+            // Correcto
+            _id.DataPropertyName = "Id";
+            codigoEvent.DataPropertyName = "CodigoEvent";
+            creadoPor.DataPropertyName = "CreadoPor";
             nombreEvent.DataPropertyName = "NombreEvent";
             tipoEvent.DataPropertyName = "TipoEvent";
             fechahoraIniEvent.DataPropertyName = "FechahoraIniEvent";

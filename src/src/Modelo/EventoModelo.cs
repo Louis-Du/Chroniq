@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -76,7 +77,7 @@ namespace src.Modelo
             }
             catch (Exception ex)
             {
-                // Si ocurre un error, retornamos una lista vacía
+                MessageBox.Show(ex.Message); // ver qué excepción está ocurriendo
                 return new List<Evento>();
             }
         }
