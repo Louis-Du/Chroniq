@@ -70,6 +70,11 @@ namespace src.Modelo
                 // Construimos el filtro: buscamos eventos donde fechahoraIniEvent >= fechaActual
                 var filtro = Builders<Evento>.Filter.Gte("fechahoraIniEvent", fechaActual);
 
+                // Si se especificó un estado de evento, lo añadimos al filtro
+             
+                    filtro = Builders<Evento>.Filter.And(filtro,
+                        Builders<Evento>.Filter.Eq("estadoevento", "habilitado"));
+
                 // Ejecutamos la consulta y la convertimos en lista
                 var eventos = collection.Find(filtro).ToList();
 
@@ -83,7 +88,7 @@ namespace src.Modelo
         }
 
 
-        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+        public bool ActualizarEvento(string nombre, string tipo, DateTime fechaIni, DateTime fechaFin, ObjectId id)
         {
             try
             {

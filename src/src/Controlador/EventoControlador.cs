@@ -88,11 +88,22 @@ namespace src.Controlador
             form.ShowDialog();
         }
 
-        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+        public bool ActualizarEvento(string nombreEvent, string tipoevent, DateTime fechaHoraIni, DateTime fechaHoraFin, ObjectId id)
         {
-            EventoModelo modelo = new EventoModelo();
+            // Validaciones básicas
+            if (string.IsNullOrWhiteSpace(nombreEvent) ||
+                string.IsNullOrWhiteSpace(tipoevent))
+            {
+                MessageBox.Show("Complete todos los campos");
+                return false;
+            }
 
-            return modelo.ActualizarEvento(id, nombre, tipo, fechaIni, fechaFin);
+            if (fechaHoraFin < fechaHoraIni)
+            {
+                MessageBox.Show("La fecha final no puede ser menor a la inicial");
+                return false;
+            }
+            return _eventoModelo.ActualizarEvento(nombreEvent, tipoevent, fechaHoraIni, fechaHoraFin, id);
         }
 
     }
