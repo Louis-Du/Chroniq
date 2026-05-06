@@ -80,9 +80,9 @@ namespace src.Modelo
                 return new List<Evento>();
             }
         }
-    
 
-     public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+
+        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace src.Modelo
                 //  Campos a actualizar
                 var update = Builders<BsonDocument>.Update
                     .Set("nombreEvent", nombre)
-                    .Set("tipoEvent", tipo)
+                    .Set("tipoevent", tipo)
                     .Set("fechahoraIniEvent", fechaIni)
                     .Set("fechahoraFinEvent", fechaFin);
 
@@ -109,5 +109,6 @@ namespace src.Modelo
             {
                 return false;
             }
-        } }
+        }
     }
+}

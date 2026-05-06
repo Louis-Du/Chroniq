@@ -19,7 +19,7 @@ namespace src.Vista
             InitializeComponent();
 
             // cargar los datos del evento en los controles del formulario
-            
+
             _idEvento = new ObjectId(_id);
             txtNombreEvent.Text = nombre;
             txtTipoEvent.Text = tipo;
@@ -46,8 +46,8 @@ namespace src.Vista
             // 📦 Obtener datos del formulario
             string nombre = txtNombreEvent.Text;
             string tipo = txtTipoEvent.Text;
-            string fechaIni = dtpFechaHoraInicio.Value.ToString("yyyy-MM-dd");
-            string fechaFin = dtpFechaHoraFin.Value.ToString("yyyy-MM-dd");
+            string fechaIni = dtpFechaHoraInicio.Value.ToString("yyyy-MM-dd HH:mm:ss");
+            string fechaFin = dtpFechaHoraFin.Value.ToString("yyyy-MM-dd HH:mm:ss");
 
             // Llamar controlador
             EventoControlador controlador = new EventoControlador();
