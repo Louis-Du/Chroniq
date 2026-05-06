@@ -80,5 +80,50 @@ namespace src.Modelo
                 return new List<Evento>();
             }
         }
+
+        public bool AgregarInvitado(string idEvento, string idInvitado, string fechahoraIniEvent, string fechahoraFinEvent)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<BsonDocument>("Eventos");
+
+                var invitadoObjectId = new ObjectId(idInvitado);
+
+                // VALIDACIÓN 1: ¿El invitado ya está en este evento?
+                var filtroYaAgregado = Builders<BsonDocument>.Filter.And(
+                    Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(idEvento)),
+                    Builders<BsonDocument>.Filter.AnyEq("invitados", invitadoObjectId)
+                );
+
+                if (collection.Find(filtroYaAgregado).Any())
+                    return false;
+
+                // VALIDACIÓN 2: ¿El invitado tiene otro evento en ese rango de horas?
+                // Buscamos eventos donde el invitado ya esté Y los horarios se solapen.
+                var filtroConflicto = Builders<BsonDocument>.Filter.And(
+                    Builders<BsonDocument>.Filter.AnyEq("invitados", invitadoObjectId),
+                    Builders<BsonDocument>.Filter.Lt("fechahoraIniEvent", fechahoraFinEvent),
+                    Builders<BsonDocument>.Filter.Gt("fechahoraFinEvent", fechahoraIniEvent)
+                );
+
+                if (collection.Find(filtroConflicto).Any())
+                    return false;
+
+                // Las validaciones pasaron: agregar el ObjectId al array invitados
+                var filtroEvento = Builders<BsonDocument>.Filter.Eq(
+                    "_id", new ObjectId(idEvento));
+
+                var actualizacion = Builders<BsonDocument>.Update.Push(
+                    "invitados", invitadoObjectId);
+
+                collection.UpdateOne(filtroEvento, actualizacion);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

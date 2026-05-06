@@ -1,6 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
 
 namespace src.Modelo
 {
@@ -85,6 +87,19 @@ namespace src.Modelo
 
             // Ejecutamos la consulta y devolvemos el primer resultado (o null).
             return _coleccionUsuarios.Find(filtro).FirstOrDefault();
+        }
+
+        public List<Usuario> ObtenerInvitados()
+        {
+            try
+            {
+                var filtro = Builders<Usuario>.Filter.Eq("tipoUser", "Invitado");
+                return _coleccionUsuarios.Find(filtro).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<Usuario>();
+            }
         }
     }
 }

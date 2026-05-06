@@ -13,10 +13,12 @@ namespace src.Controlador
         private const string FORMATO_FECHA_BD = "yyyy-MM-dd HH:mm:ss";
 
         private readonly EventoModelo _eventoModelo;
+        private readonly UsuarioModelo _usuarioModelo;
 
         public EventoControlador()
         {
             _eventoModelo = new EventoModelo();
+            _usuarioModelo = new UsuarioModelo();
         }
 
         public bool RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
@@ -78,7 +80,35 @@ namespace src.Controlador
 
             return eventos;
         }
-       
+
+        public List<Usuario> ObtenerInvitados()
+        {
+            return _usuarioModelo.ObtenerInvitados();
+        }
+
+        public bool AgregarInvitado(string idEvento, string idInvitado,
+            string fechahoraIniEvento, string fechahoraFinEvento)
+        {
+            bool agregado = _eventoModelo.AgregarInvitado(
+                idEvento, idInvitado, fechahoraIniEvento, fechahoraFinEvento);
+
+            if (agregado)
+            {
+                MessageBox.Show("Invitado agregado correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "No se pudo agregar el invitado. Puede que ya esté en este " +
+                    "evento o tenga otro evento en el mismo horario.",
+                    "No se pudo agregar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+
+
         public void AbrirFormularioActualizar(string id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
         {
             FormActualizarEvento form = new FormActualizarEvento(
