@@ -15,25 +15,27 @@ namespace src.Vista
 {
     public class BaseMaterialForm : MaterialForm
     {
+        private Bitmap _backgroundBitmap;
+
         public BaseMaterialForm()
         {
             this.DoubleBuffered = true;
 
             this.SetStyle(
-            ControlStyles.AllPaintingInWmPaint |
-            ControlStyles.UserPaint |
-            ControlStyles.OptimizedDoubleBuffer,
-            true);
+                ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.UserPaint |
+                ControlStyles.OptimizedDoubleBuffer,
+                true);
 
+            if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
             {
-                if (LicenseManager.UsageMode != LicenseUsageMode.Designtime)
-                {
-                    var materialSkinManager = MaterialSkinManager.Instance;
-
-                    materialSkinManager.AddFormToManage(this);
-                    materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-                }
+                var materialSkinManager = MaterialSkinManager.Instance;
+                materialSkinManager.AddFormToManage(this);
+                materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             }
+
+            // Crear el bitmap inicial
+            UpdateBackgroundBitmap();
         }
 
         public void AlternarTema()
@@ -42,30 +44,55 @@ namespace src.Vista
             manager.Theme = (manager.Theme == MaterialSkinManager.Themes.LIGHT)
                 ? MaterialSkinManager.Themes.DARK
                 : MaterialSkinManager.Themes.LIGHT;
+
+            // Regenerar el fondo para que el bitmap use el nuevo BackColor/tema
+            UpdateBackgroundBitmap();
         }
 
-        //protected override void WndProc(ref Message m)
-        //{
-        //    const int WM_NCHITTEST = 0x84;
-        //    const int HTCAPTION = 0x02;
-
-        //    base.WndProc(ref m);
-
-        //    // Si el usuario hace clic (test de golpe), le decimos que golpeó el "Caption" (Barra de título)
-        //    if (m.Msg == WM_NCHITTEST)
-        //    {
-        //        m.Result = (IntPtr)HTCAPTION;
-        //    }
-        //}
+        protected override void OnSizeChanged(EventArgs e)
+        {
+            base.OnSizeChanged(e);
+            UpdateBackgroundBitmap();
+        }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            // Dejamos que el sistema dibuje BackgroundImage + controles hijos
             base.OnPaint(e);
+        }
 
-            Graphics g = e.Graphics;
-            g.SmoothingMode = SmoothingMode.AntiAlias;
+        private void UpdateBackgroundBitmap()
+        {
+            // No crear durante diseño ni si tamaño inválido
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                return;
+            if (this.Width <= 0 || this.Height <= 0)
+                return;
 
-            DrawBackgroundShapes(g);
+            // Crear nuevo bitmap y dibujar las formas en él
+            var bmp = new Bitmap(this.Width, this.Height);
+            using (Graphics g = Graphics.FromImage(bmp))
+            {
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.Clear(this.BackColor);
+                DrawBackgroundShapes(g);
+            }
+
+            // Asignar como BackgroundImage y limpiar el anterior
+            var previous = _backgroundBitmap;
+            _backgroundBitmap = bmp;
+            this.BackgroundImage = _backgroundBitmap;
+            this.BackgroundImageLayout = ImageLayout.None;
+            previous?.Dispose();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _backgroundBitmap?.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         private void DrawBackgroundShapes(Graphics g)
@@ -101,6 +128,36 @@ namespace src.Vista
                         g.FillEllipse(brush, x, y, 4, 4);
                     }
                 }
+            }
+        }
+
+        private void ApplyTransparentToAllLabels(Control parent)
+        {
+            if (parent == null)
+                return;
+
+            foreach (Control c in parent.Controls)
+            {
+                // Evitar cambios en tiempo de diseño
+                if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+                    continue;
+
+                // Solo aplicar a Label de WinForms (incluye tu TransparentLabel que herede de System.Windows.Forms.Label)
+                if (c is System.Windows.Forms.Label)
+                {
+                    try
+                    {
+                        c.BackColor = Color.Transparent;
+                    }
+                    catch
+                    {
+                        // Ignoramos fallos menores para no romper la UI en tiempo de ejecución
+                    }
+                }
+
+                // Recursividad para hijos
+                if (c.HasChildren)
+                    ApplyTransparentToAllLabels(c);
             }
         }
     }

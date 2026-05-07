@@ -63,7 +63,7 @@
             this.materialLabel1.Font = new System.Drawing.Font("Roboto", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
             this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(16, 44);
+            this.materialLabel1.Location = new System.Drawing.Point(68, 81);
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(221, 29);
@@ -218,7 +218,7 @@
             this.btnCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCrear.HighEmphasis = true;
             this.btnCrear.Icon = null;
-            this.btnCrear.Location = new System.Drawing.Point(279, 450);
+            this.btnCrear.Location = new System.Drawing.Point(397, 450);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCrear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCrear.Name = "btnCrear";
@@ -240,7 +240,7 @@
             this.btnVolver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnVolver.HighEmphasis = true;
             this.btnVolver.Icon = null;
-            this.btnVolver.Location = new System.Drawing.Point(10, 94);
+            this.btnVolver.Location = new System.Drawing.Point(142, 450);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnVolver.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnVolver.Name = "btnVolver";
