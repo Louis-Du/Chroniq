@@ -44,7 +44,7 @@ namespace src.Vista
             dgvUsuariosDisponibles.AutoGenerateColumns = false;
             dgvUsuariosDisponibles.DataSource = invitados;
 
-            // DataPropertyName apunta a las propiedades de Usuario.cs
+            numeroCedula.DataPropertyName = "NumeroCedula";
             nombreUser.DataPropertyName = "NombreUser";
             edadUser.DataPropertyName = "EdadUser";
             generoUser.DataPropertyName = "GeneroUser";
@@ -58,8 +58,6 @@ namespace src.Vista
             dgvInscritos.AutoGenerateColumns = false;
             dgvInscritos.DataSource = inscritos;
             
-
-            // DataPropertyName apunta a las propiedades de Usuario.cs
             numeroCedulaInscrito.DataPropertyName = "NumeroCedula";
             nombreInscrito.DataPropertyName = "NombreUser";
             edadInscrito.DataPropertyName = "EdadUser";
@@ -70,6 +68,7 @@ namespace src.Vista
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
+            // Agrega dialogo Lukas
             this.Close();
         }
 
@@ -87,11 +86,7 @@ namespace src.Vista
             // DataBoundItem devuelve el objeto Usuario de esa fila.
             var invitadoSeleccionado = (src.Modelo.Usuario)dgvUsuariosDisponibles.CurrentRow.DataBoundItem;
 
-            bool ok = _eventoControlador.AgregarInvitado(
-                _idEvento,
-                invitadoSeleccionado.Id,
-                _fechaIni,
-                _fechaFin);
+            bool ok = _eventoControlador.AgregarInvitado(_idEvento, invitadoSeleccionado.Id, _fechaIni, _fechaFin);
 
             if (ok)
             {

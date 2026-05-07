@@ -101,21 +101,18 @@ namespace src.Vista
         }
 
         // refactorizar
+        // Investigar sobre lambda += (s, args) =>
         private void btnCrear_Click(object sender, EventArgs e)
         {
             FormCrearEvento frm = new FormCrearEvento(_idLider);
-            frm.FormClosed += (s, args) => CargarEventos();
+            frm.FormClosed += (s, args) => CargarEventos(); // Linea para cargar eventos luego de cerrar FormCrearEvento
             frm.Show();
         }
 
         private void btnAgregarInvitado_Click(object sender, EventArgs e)
         {
             var eventoSeleccionado = (Evento)dgvEventos.CurrentRow.DataBoundItem; // se utiliza var para acceder indirectamente a modelo por medio de controlador infiriendolo
-            new FormAgregarInvitado(
-                eventoSeleccionado.Id,
-                eventoSeleccionado.FechahoraIniEvent,
-                eventoSeleccionado.FechahoraFinEvent
-            ).ShowDialog();
+            new FormAgregarInvitado(eventoSeleccionado.Id, eventoSeleccionado.FechahoraIniEvent, eventoSeleccionado.FechahoraFinEvent).ShowDialog();
         }
     }
 }

@@ -98,18 +98,18 @@ namespace src.Controlador
             List<Usuario> disponibles = new List<Usuario>();
             foreach (Usuario usuario in todos)
             {
-                if (!idsInscritos.Contains(usuario.Id))
+                if (!idsInscritos.Contains(usuario.Id)) 
+                {
                     disponibles.Add(usuario);
+                }
             }
 
             return disponibles;
         }
 
-        public bool AgregarInvitado(string idEvento, string idInvitado,
-            string fechahoraIniEvento, string fechahoraFinEvento)
+        public bool AgregarInvitado(string idEvento, string idInvitado, string fechahoraIniEvento, string fechahoraFinEvento)
         {
-            bool agregado = _eventoModelo.AgregarInvitado(
-                idEvento, idInvitado, fechahoraIniEvento, fechahoraFinEvento);
+            bool agregado = _eventoModelo.AgregarInvitado(idEvento, idInvitado, fechahoraIniEvento, fechahoraFinEvento);
 
             if (agregado)
             {
@@ -126,11 +126,6 @@ namespace src.Controlador
                 return false;
             }
         }
-        /*
-        public List<Usuario> ObtenerInscriptos(List<string> idsInvitados)
-        {
-            return _usuarioModelo.ObtenerInvitadosInscriptos(idsInvitados);
-        }*/
 
         public List<Usuario> ObtenerInscriptos(string idEvento)
         {
