@@ -32,15 +32,17 @@ namespace src.Vista
             _fechaIni = FechahoraIniEvent;
             _fechaFin = FechahoraFinEvent;
 
-            CargarInvitados();
+            CargarUsuariosDisponibles();
+            CargarInvitadosActuales();
+
         }
 
-        private void CargarInvitados()
+        private void CargarUsuariosDisponibles()
         {
-            var invitados = _eventoControlador.ObtenerInvitados();
+            var invitados = _eventoControlador.ObtenerInvitados(_idEvento);
 
-            dgvInvitados.AutoGenerateColumns = false;
-            dgvInvitados.DataSource = invitados;
+            dgvUsuariosDisponibles.AutoGenerateColumns = false;
+            dgvUsuariosDisponibles.DataSource = invitados;
 
             // DataPropertyName apunta a las propiedades de Usuario.cs
             nombreUser.DataPropertyName = "NombreUser";
@@ -48,6 +50,22 @@ namespace src.Vista
             generoUser.DataPropertyName = "GeneroUser";
             emailUser.DataPropertyName = "EmailUser";
             telefonoUser.DataPropertyName = "TelefonoUser";
+        }
+
+        private void CargarInvitadosActuales()
+        {
+            var inscritos = _eventoControlador.ObtenerInscriptos(_idEvento);
+            dgvInscritos.AutoGenerateColumns = false;
+            dgvInscritos.DataSource = inscritos;
+            
+
+            // DataPropertyName apunta a las propiedades de Usuario.cs
+            numeroCedulaInscrito.DataPropertyName = "NumeroCedula";
+            nombreInscrito.DataPropertyName = "NombreUser";
+            edadInscrito.DataPropertyName = "EdadUser";
+            generoInscrito.DataPropertyName = "GeneroUser";
+            emailInscrito.DataPropertyName = "EmailUser";
+            telefonoInscrito.DataPropertyName = "TelefonoUser";
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -58,7 +76,7 @@ namespace src.Vista
         private void btnInvitarUsuario_Click(object sender, EventArgs e)
         {
             // Verificar que haya una fila seleccionada en el grid
-            if (dgvInvitados.CurrentRow == null)
+            if (dgvUsuariosDisponibles.CurrentRow == null)
             {
                 MessageBox.Show("Selecciona un invitado de la lista.",
                     "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -67,7 +85,7 @@ namespace src.Vista
 
             // Obtenemos el Id del invitado desde la fila seleccionada.
             // DataBoundItem devuelve el objeto Usuario de esa fila.
-            var invitadoSeleccionado = (src.Modelo.Usuario)dgvInvitados.CurrentRow.DataBoundItem;
+            var invitadoSeleccionado = (src.Modelo.Usuario)dgvUsuariosDisponibles.CurrentRow.DataBoundItem;
 
             bool ok = _eventoControlador.AgregarInvitado(
                 _idEvento,
@@ -75,7 +93,11 @@ namespace src.Vista
                 _fechaIni,
                 _fechaFin);
 
-            if (ok) this.Close();
+            if (ok)
+            {
+                CargarInvitadosActuales();
+                CargarUsuariosDisponibles();
+            }
         }
     }
 }

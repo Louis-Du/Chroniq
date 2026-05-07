@@ -1,8 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using src.Modelo;
 using src.Vista;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace src.Controlador
 {
@@ -81,9 +82,27 @@ namespace src.Controlador
             return eventos;
         }
 
-        public List<Usuario> ObtenerInvitados()
+        public List<Usuario> ObtenerInvitados(string idEvento)
         {
-            return _usuarioModelo.ObtenerInvitados();
+            List<Usuario> todos = _usuarioModelo.ObtenerInvitados();
+            List<Usuario> inscritos = ObtenerInscriptos(idEvento);
+
+            // Construimos la lista de ids de los ya inscritos
+            List<string> idsInscritos = new List<string>();
+            foreach (Usuario inscrito in inscritos)
+            {
+                idsInscritos.Add(inscrito.Id);
+            }
+
+            // Agregamos solo los que NO están en la lista de inscritos
+            List<Usuario> disponibles = new List<Usuario>();
+            foreach (Usuario usuario in todos)
+            {
+                if (!idsInscritos.Contains(usuario.Id))
+                    disponibles.Add(usuario);
+            }
+
+            return disponibles;
         }
 
         public bool AgregarInvitado(string idEvento, string idInvitado,
@@ -107,7 +126,21 @@ namespace src.Controlador
                 return false;
             }
         }
+        /*
+        public List<Usuario> ObtenerInscriptos(List<string> idsInvitados)
+        {
+            return _usuarioModelo.ObtenerInvitadosInscriptos(idsInvitados);
+        }*/
 
+        public List<Usuario> ObtenerInscriptos(string idEvento)
+        {
+            Evento evento = _eventoModelo.ObtenerEventoPorId(idEvento);
+
+            if (evento == null)
+                return new List<Usuario>();
+
+            return _usuarioModelo.ObtenerInvitadosInscriptos(evento.Invitados);
+        }
 
         public void AbrirFormularioActualizar(string id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
         {

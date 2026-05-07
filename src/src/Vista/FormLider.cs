@@ -51,9 +51,9 @@ namespace src.Vista
             dgvEventos.AutoGenerateColumns = false;
             dgvEventos.DataSource = eventos;
 
-            _id.DataPropertyName = "id";
-            codigoEvent.DataPropertyName = "codigoEvent";
-            creadoPor.DataPropertyName = "creadoPor";
+            _id.DataPropertyName = "Id";
+            codigoEvent.DataPropertyName = "CodigoEvent";
+            creadoPor.DataPropertyName = "CreadoPor";
             nombreEvent.DataPropertyName = "NombreEvent";
             tipoEvent.DataPropertyName = "TipoEvent";
             fechahoraIniEvent.DataPropertyName = "FechahoraIniEvent";
@@ -100,6 +100,7 @@ namespace src.Vista
             );
         }
 
+        // refactorizar
         private void btnCrear_Click(object sender, EventArgs e)
         {
             FormCrearEvento frm = new FormCrearEvento(_idLider);

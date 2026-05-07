@@ -10,6 +10,22 @@ namespace src.Modelo
 {
     public class EventoModelo
     {
+        public Evento ObtenerEventoPorId(string idEvento)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<Evento>("Eventos");
+
+                var filtro = Builders<Evento>.Filter.Eq(e => e.Id, idEvento);
+                return collection.Find(filtro).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public bool GuardarEvento(string nombreEvent, string tipoEvent, string fechahoraIniEvent, string fechahoraFinEvent, string idLider)
         {
             try
@@ -74,7 +90,7 @@ namespace src.Modelo
 
                 return eventos;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Si ocurre un error, retornamos una lista vacía
                 return new List<Evento>();

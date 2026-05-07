@@ -28,40 +28,88 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvInvitados = new System.Windows.Forms.DataGridView();
-            this.btnInvitarUsuario = new MaterialSkin.Controls.MaterialButton();
-            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
+            this.dgvUsuariosDisponibles = new System.Windows.Forms.DataGridView();
             this.numeroCedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edadUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.generoUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInvitados)).BeginInit();
+            this.btnInvitarUsuario = new MaterialSkin.Controls.MaterialButton();
+            this.btnVolver = new MaterialSkin.Controls.MaterialButton();
+            this.dgvInscritos = new System.Windows.Forms.DataGridView();
+            this.numeroCedulaInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.edadInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generoInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.telefonoInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuariosDisponibles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscritos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvInvitados
+            // dgvUsuariosDisponibles
             // 
-            this.dgvInvitados.AllowUserToAddRows = false;
-            this.dgvInvitados.AllowUserToDeleteRows = false;
-            this.dgvInvitados.AllowUserToOrderColumns = true;
-            this.dgvInvitados.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
-            this.dgvInvitados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvInvitados.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dgvInvitados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvInvitados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUsuariosDisponibles.AllowUserToAddRows = false;
+            this.dgvUsuariosDisponibles.AllowUserToDeleteRows = false;
+            this.dgvUsuariosDisponibles.AllowUserToOrderColumns = true;
+            this.dgvUsuariosDisponibles.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvUsuariosDisponibles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUsuariosDisponibles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvUsuariosDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuariosDisponibles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroCedula,
             this.nombreUser,
             this.edadUser,
             this.generoUser,
             this.emailUser,
             this.telefonoUser});
-            this.dgvInvitados.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.dgvInvitados.Location = new System.Drawing.Point(31, 117);
-            this.dgvInvitados.Name = "dgvInvitados";
-            this.dgvInvitados.ReadOnly = true;
-            this.dgvInvitados.Size = new System.Drawing.Size(738, 208);
-            this.dgvInvitados.TabIndex = 2;
+            this.dgvUsuariosDisponibles.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvUsuariosDisponibles.Location = new System.Drawing.Point(31, 117);
+            this.dgvUsuariosDisponibles.Name = "dgvUsuariosDisponibles";
+            this.dgvUsuariosDisponibles.ReadOnly = true;
+            this.dgvUsuariosDisponibles.Size = new System.Drawing.Size(313, 208);
+            this.dgvUsuariosDisponibles.TabIndex = 2;
+            // 
+            // numeroCedula
+            // 
+            this.numeroCedula.HeaderText = "Número cedula";
+            this.numeroCedula.Name = "numeroCedula";
+            this.numeroCedula.ReadOnly = true;
+            // 
+            // nombreUser
+            // 
+            this.nombreUser.HeaderText = "Nombre ";
+            this.nombreUser.Name = "nombreUser";
+            this.nombreUser.ReadOnly = true;
+            this.nombreUser.Width = 150;
+            // 
+            // edadUser
+            // 
+            this.edadUser.HeaderText = "Edad";
+            this.edadUser.Name = "edadUser";
+            this.edadUser.ReadOnly = true;
+            this.edadUser.Width = 150;
+            // 
+            // generoUser
+            // 
+            this.generoUser.HeaderText = "Genero";
+            this.generoUser.Name = "generoUser";
+            this.generoUser.ReadOnly = true;
+            // 
+            // emailUser
+            // 
+            this.emailUser.HeaderText = "Email";
+            this.emailUser.Name = "emailUser";
+            this.emailUser.ReadOnly = true;
+            this.emailUser.Width = 150;
+            // 
+            // telefonoUser
+            // 
+            this.telefonoUser.HeaderText = "Telefono ";
+            this.telefonoUser.Name = "telefonoUser";
+            this.telefonoUser.ReadOnly = true;
+            this.telefonoUser.Width = 150;
             // 
             // btnInvitarUsuario
             // 
@@ -107,57 +155,82 @@
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // numeroCedula
+            // dgvInscritos
             // 
-            this.numeroCedula.HeaderText = "Número cedula";
-            this.numeroCedula.Name = "numeroCedula";
-            this.numeroCedula.ReadOnly = true;
+            this.dgvInscritos.AllowUserToAddRows = false;
+            this.dgvInscritos.AllowUserToDeleteRows = false;
+            this.dgvInscritos.AllowUserToOrderColumns = true;
+            this.dgvInscritos.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvInscritos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvInscritos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgvInscritos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvInscritos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.numeroCedulaInscrito,
+            this.nombreInscrito,
+            this.edadInscrito,
+            this.generoInscrito,
+            this.emailInscrito,
+            this.telefonoInscrito});
+            this.dgvInscritos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.dgvInscritos.Location = new System.Drawing.Point(402, 117);
+            this.dgvInscritos.Name = "dgvInscritos";
+            this.dgvInscritos.ReadOnly = true;
+            this.dgvInscritos.Size = new System.Drawing.Size(313, 208);
+            this.dgvInscritos.TabIndex = 7;
             // 
-            // nombreUser
+            // numeroCedulaInscrito
             // 
-            this.nombreUser.HeaderText = "Nombre ";
-            this.nombreUser.Name = "nombreUser";
-            this.nombreUser.ReadOnly = true;
-            this.nombreUser.Width = 150;
+            this.numeroCedulaInscrito.HeaderText = "Número cedula";
+            this.numeroCedulaInscrito.Name = "numeroCedulaInscrito";
+            this.numeroCedulaInscrito.ReadOnly = true;
             // 
-            // edadUser
+            // nombreInscrito
             // 
-            this.edadUser.HeaderText = "Edad";
-            this.edadUser.Name = "edadUser";
-            this.edadUser.ReadOnly = true;
-            this.edadUser.Width = 150;
+            this.nombreInscrito.HeaderText = "Nombre ";
+            this.nombreInscrito.Name = "nombreInscrito";
+            this.nombreInscrito.ReadOnly = true;
+            this.nombreInscrito.Width = 150;
             // 
-            // generoUser
+            // edadInscrito
             // 
-            this.generoUser.HeaderText = "Genero";
-            this.generoUser.Name = "generoUser";
-            this.generoUser.ReadOnly = true;
+            this.edadInscrito.HeaderText = "Edad";
+            this.edadInscrito.Name = "edadInscrito";
+            this.edadInscrito.ReadOnly = true;
+            this.edadInscrito.Width = 150;
             // 
-            // emailUser
+            // generoInscrito
             // 
-            this.emailUser.HeaderText = "Email";
-            this.emailUser.Name = "emailUser";
-            this.emailUser.ReadOnly = true;
-            this.emailUser.Width = 150;
+            this.generoInscrito.HeaderText = "Genero";
+            this.generoInscrito.Name = "generoInscrito";
+            this.generoInscrito.ReadOnly = true;
             // 
-            // telefonoUser
+            // emailInscrito
             // 
-            this.telefonoUser.HeaderText = "Telefono ";
-            this.telefonoUser.Name = "telefonoUser";
-            this.telefonoUser.ReadOnly = true;
-            this.telefonoUser.Width = 150;
+            this.emailInscrito.HeaderText = "Email";
+            this.emailInscrito.Name = "emailInscrito";
+            this.emailInscrito.ReadOnly = true;
+            this.emailInscrito.Width = 150;
+            // 
+            // telefonoInscrito
+            // 
+            this.telefonoInscrito.HeaderText = "Telefono ";
+            this.telefonoInscrito.Name = "telefonoInscrito";
+            this.telefonoInscrito.ReadOnly = true;
+            this.telefonoInscrito.Width = 150;
             // 
             // FormAgregarInvitado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvInscritos);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnInvitarUsuario);
-            this.Controls.Add(this.dgvInvitados);
+            this.Controls.Add(this.dgvUsuariosDisponibles);
             this.Name = "FormAgregarInvitado";
             this.Text = "FormAgregarInvitado";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvInvitados)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuariosDisponibles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvInscritos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,7 +238,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvInvitados;
+        private System.Windows.Forms.DataGridView dgvUsuariosDisponibles;
         private MaterialSkin.Controls.MaterialButton btnInvitarUsuario;
         private MaterialSkin.Controls.MaterialButton btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroCedula;
@@ -174,5 +247,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn generoUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonoUser;
+        private System.Windows.Forms.DataGridView dgvInscritos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numeroCedulaInscrito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreInscrito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn edadInscrito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn generoInscrito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailInscrito;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoInscrito;
     }
 }
