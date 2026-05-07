@@ -1,6 +1,8 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
 
 namespace src.Modelo
 {
@@ -79,12 +81,42 @@ namespace src.Modelo
         {
             // Construimos el filtro: buscamos donde numeroCedula Y passwordUser coincidan.
             var filtro = Builders<Usuario>.Filter.And(
-                Builders<Usuario>.Filter.Eq("numeroCedula", numeroCedula),
-                Builders<Usuario>.Filter.Eq("passwordUser", passwordUser)
+                Builders<Usuario>.Filter.Eq(u => u.NumeroCedula, numeroCedula),
+                Builders<Usuario>.Filter.Eq(u => u.PasswordUser, passwordUser)
             );
 
             // Ejecutamos la consulta y devolvemos el primer resultado (o null).
             return _coleccionUsuarios.Find(filtro).FirstOrDefault();
+        }
+
+        public List<Usuario> ObtenerInvitados()
+        {
+            try
+            {
+                var filtro = Builders<Usuario>.Filter.Eq(u => u.TipoUser, "Invitado");
+                return _coleccionUsuarios.Find(filtro).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<Usuario>();
+            }
+        }
+
+        public List<Usuario> ObtenerInvitadosInscriptos(List<string> idsInvitados)
+        {
+            try
+            {
+                if (idsInvitados == null || idsInvitados.Count == 0)
+                    return new List<Usuario>();
+
+                // Busca todos los usuarios cuyo Id esté en la lista
+                var filtro = Builders<Usuario>.Filter.In(u => u.Id, idsInvitados);
+                return _coleccionUsuarios.Find(filtro).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<Usuario>();
+            }
         }
     }
 }
