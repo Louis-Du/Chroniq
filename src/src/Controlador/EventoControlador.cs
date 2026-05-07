@@ -158,6 +158,5 @@ namespace src.Controlador
 
             return modelo.ActualizarEvento(id, nombre, tipo, fechaIni, fechaFin);
         }
-
     }
 }
