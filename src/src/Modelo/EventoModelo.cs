@@ -26,7 +26,7 @@ namespace src.Modelo
             }
         }
 
-        public bool GuardarEvento(string nombreEvent, string tipoEvent, string fechahoraIniEvent, string fechahoraFinEvent, string idLider)
+        public string GuardarEvento(string nombreEvent, string tipoEvent, string fechahoraIniEvent, string fechahoraFinEvent, string idLider)
         {
             try
             {
@@ -41,7 +41,7 @@ namespace src.Modelo
                 );
 
                 if (collection.Find(filtroConflicto).Any())
-                    return false;
+                    return null;
 
                 // Generar codigoEvent
                 int codigoEvent = (int)collection.CountDocuments(new BsonDocument()) + 1;
@@ -58,11 +58,11 @@ namespace src.Modelo
                 };
 
                 collection.InsertOne(documento);
-                return true;
+                return documento["_id"].AsObjectId.ToString();
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 
@@ -141,5 +141,7 @@ namespace src.Modelo
                 return false;
             }
         }
+    
+
     }
 }

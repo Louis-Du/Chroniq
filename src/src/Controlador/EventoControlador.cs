@@ -22,27 +22,27 @@ namespace src.Controlador
             _usuarioModelo = new UsuarioModelo();
         }
 
-        public bool RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
+        public string RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
         {
             if (string.IsNullOrWhiteSpace(nombreEvent))
             {
                 MessageBox.Show("El nombre del evento es obligatorio.",
                     "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
 
             if (string.IsNullOrWhiteSpace(tipoEvent))
             {
                 MessageBox.Show("Debes seleccionar un tipo de evento.",
                     "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
 
             if (fechaHoraFin <= fechaHoraInicio)
             {
                 MessageBox.Show("La fecha y hora de fin debe ser posterior a la de inicio.",
                     "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
 
             // Convertir DateTime a string con el formato de la BD.
@@ -50,20 +50,19 @@ namespace src.Controlador
             string fechaIniStr = fechaHoraInicio.ToString(FORMATO_FECHA_BD);
             string fechaFinStr = fechaHoraFin.ToString(FORMATO_FECHA_BD);
 
-            bool guardadoExitoso = _eventoModelo.GuardarEvento(
-                nombreEvent, tipoEvent, fechaIniStr, fechaFinStr, idLider);
+            string nuevoIdEvento = _eventoModelo.GuardarEvento(nombreEvent, tipoEvent, fechaIniStr, fechaFinStr, idLider);
 
-            if (guardadoExitoso)
+            if (nuevoIdEvento != null)
             {
                 MessageBox.Show($"El evento '{nombreEvent}' fue registrado correctamente.",
                     "Evento registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
+                return nuevoIdEvento;
             }
             else
             {
                 MessageBox.Show("No se pudo registrar el evento. El horario seleccionado ya está ocupado.",
                     "Conflicto de horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
         }
 
@@ -135,6 +134,12 @@ namespace src.Controlador
                 return new List<Usuario>();
 
             return _usuarioModelo.ObtenerInvitadosInscriptos(evento.Invitados);
+        }
+
+        public Evento ConsultarEventoPorID(string idEvento)
+        {
+            Evento evento = _eventoModelo.ObtenerEventoPorId(idEvento);
+            return evento;
         }
 
         public void AbrirFormularioActualizar(string id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
