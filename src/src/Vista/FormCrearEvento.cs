@@ -1,4 +1,5 @@
 ﻿using src.Controlador;
+using src.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,26 +16,34 @@ namespace src.Vista
     {
         private readonly EventoControlador _eventoControlador;
         private readonly string _idLider;
-        public FormCrearEvento(string idUsuario)
+        public FormCrearEvento(string idLider)
         {
             InitializeComponent();
-            _idLider = idUsuario;
+            _idLider = idLider;
             _eventoControlador = new EventoControlador();
+
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            bool exitoso = _eventoControlador.RegistrarEvento(materialTextBox2.Text.Trim(), materialTextBox3.Text.Trim(), dateTimePicker1.Value, dateTimePicker2.Value, _idLider);
-            if (exitoso == true)
+            string nuevoId = _eventoControlador.RegistrarEvento(materialTextBox2.Text.Trim(), materialTextBox3.Text.Trim(), dateTimePicker1.Value, dateTimePicker2.Value, _idLider);
+            if (nuevoId != null)
             {
-                this.Close();
+                new FormAgregarInvitado(
+                    nuevoId, 
+                    dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss"), 
+                    dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss")
+                ).ShowDialog();
             }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            // HACER DIALOGO DE CONFIRMACIÓN
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Estás seguro que deseas cancelar la creación del evento?", "Volver al menú anterior", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -1,8 +1,10 @@
+
 using MongoDB.Bson;
 using src.Modelo;
 using src.Vista;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace src.Controlador
@@ -14,33 +16,35 @@ namespace src.Controlador
         private const string FORMATO_FECHA_BD = "yyyy-MM-dd HH:mm:ss";
 
         private readonly EventoModelo _eventoModelo;
+        private readonly UsuarioModelo _usuarioModelo;
 
         public EventoControlador()
         {
             _eventoModelo = new EventoModelo();
+            _usuarioModelo = new UsuarioModelo();
         }
 
-        public bool RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
+        public string RegistrarEvento(string nombreEvent, string tipoEvent, DateTime fechaHoraInicio, DateTime fechaHoraFin, string idLider)
         {
             if (string.IsNullOrWhiteSpace(nombreEvent))
             {
                 MessageBox.Show("El nombre del evento es obligatorio.",
                     "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
 
             if (string.IsNullOrWhiteSpace(tipoEvent))
             {
                 MessageBox.Show("Debes seleccionar un tipo de evento.",
                     "Campo requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
 
             if (fechaHoraFin <= fechaHoraInicio)
             {
                 MessageBox.Show("La fecha y hora de fin debe ser posterior a la de inicio.",
                     "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
 
             // Convertir DateTime a string con el formato de la BD.
@@ -48,20 +52,19 @@ namespace src.Controlador
             string fechaIniStr = fechaHoraInicio.ToString(FORMATO_FECHA_BD);
             string fechaFinStr = fechaHoraFin.ToString(FORMATO_FECHA_BD);
 
-            bool guardadoExitoso = _eventoModelo.GuardarEvento(
-                nombreEvent, tipoEvent, fechaIniStr, fechaFinStr, idLider);
+            string nuevoIdEvento = _eventoModelo.GuardarEvento(nombreEvent, tipoEvent, fechaIniStr, fechaFinStr, idLider);
 
-            if (guardadoExitoso)
+            if (nuevoIdEvento != null)
             {
                 MessageBox.Show($"El evento '{nombreEvent}' fue registrado correctamente.",
                     "Evento registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return true;
+                return nuevoIdEvento;
             }
             else
             {
                 MessageBox.Show("No se pudo registrar el evento. El horario seleccionado ya está ocupado.",
                     "Conflicto de horario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
+                return null;
             }
         }
 
@@ -79,7 +82,68 @@ namespace src.Controlador
 
             return eventos;
         }
-       
+
+        public List<Usuario> ObtenerInvitados(string idEvento)
+        {
+            List<Usuario> todos = _usuarioModelo.ObtenerInvitados();
+            List<Usuario> inscritos = ObtenerInscriptos(idEvento);
+
+            // Construimos la lista de ids de los ya inscritos
+            List<string> idsInscritos = new List<string>();
+            foreach (Usuario inscrito in inscritos)
+            {
+                idsInscritos.Add(inscrito.Id);
+            }
+
+            // Agregamos solo los que NO están en la lista de inscritos
+            List<Usuario> disponibles = new List<Usuario>();
+            foreach (Usuario usuario in todos)
+            {
+                if (!idsInscritos.Contains(usuario.Id)) 
+                {
+                    disponibles.Add(usuario);
+                }
+            }
+
+            return disponibles;
+        }
+
+        public bool AgregarInvitado(string idEvento, string idInvitado, string fechahoraIniEvento, string fechahoraFinEvento)
+        {
+            bool agregado = _eventoModelo.AgregarInvitado(idEvento, idInvitado, fechahoraIniEvento, fechahoraFinEvento);
+
+            if (agregado)
+            {
+                MessageBox.Show("Invitado agregado correctamente.",
+                    "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "No se pudo agregar el invitado. Puede que ya esté en este " +
+                    "evento o tenga otro evento en el mismo horario.",
+                    "No se pudo agregar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+        }
+
+        public List<Usuario> ObtenerInscriptos(string idEvento)
+        {
+            Evento evento = _eventoModelo.ObtenerEventoPorId(idEvento);
+
+            if (evento == null)
+                return new List<Usuario>();
+
+            return _usuarioModelo.ObtenerInvitadosInscriptos(evento.Invitados);
+        }
+
+        public Evento ConsultarEventoPorID(string idEvento)
+        {
+            Evento evento = _eventoModelo.ObtenerEventoPorId(idEvento);
+            return evento;
+        }
+
         public void AbrirFormularioActualizar(string id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
         {
             FormActualizarEvento form = new FormActualizarEvento(
@@ -140,6 +204,5 @@ namespace src.Controlador
             }
             return _eventoModelo.ActualizarEvento(nombreEvent, tipoevent, fechaHoraIni, fechaHoraFin, id);
         }
-
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +11,23 @@ namespace src.Modelo
 {
     public class EventoModelo
     {
-        public bool GuardarEvento(string nombreEvent, string tipoEvent, string fechahoraIniEvent, string fechahoraFinEvent, string idLider)
+        public Evento ObtenerEventoPorId(string idEvento)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<Evento>("Eventos");
+
+                var filtro = Builders<Evento>.Filter.Eq(e => e.Id, idEvento);
+                return collection.Find(filtro).FirstOrDefault();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public string GuardarEvento(string nombreEvent, string tipoEvent, string fechahoraIniEvent, string fechahoraFinEvent, string idLider)
         {
             try
             {
@@ -26,7 +42,7 @@ namespace src.Modelo
                 );
 
                 if (collection.Find(filtroConflicto).Any())
-                    return false;
+                    return null;
 
                 // Generar codigoEvent
                 int codigoEvent = (int)collection.CountDocuments(new BsonDocument()) + 1;
@@ -43,11 +59,11 @@ namespace src.Modelo
                 };
 
                 collection.InsertOne(documento);
-                return true;
+                return documento["_id"].AsObjectId.ToString();
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
 
@@ -70,11 +86,6 @@ namespace src.Modelo
                 // Construimos el filtro: buscamos eventos donde fechahoraIniEvent >= fechaActual
                 var filtro = Builders<Evento>.Filter.Gte("fechahoraIniEvent", fechaActual);
 
-                // Si se especificó un estado de evento, lo añadimos al filtro
-             
-                    filtro = Builders<Evento>.Filter.And(filtro,
-                        Builders<Evento>.Filter.Eq("estadoevento", "habilitado"));
-
                 // Ejecutamos la consulta y la convertimos en lista
                 var eventos = collection.Find(filtro).ToList();
 
@@ -86,7 +97,52 @@ namespace src.Modelo
                 return new List<Evento>();
             }
         }
+      
+        public bool AgregarInvitado(string idEvento, string idInvitado, string fechahoraIniEvent, string fechahoraFinEvent)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<BsonDocument>("Eventos");
 
+                var invitadoObjectId = new ObjectId(idInvitado);
+
+                // VALIDACIÓN 1: ¿El invitado ya está en este evento?
+                var filtroYaAgregado = Builders<BsonDocument>.Filter.And(
+                    Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(idEvento)),
+                    Builders<BsonDocument>.Filter.AnyEq("invitados", invitadoObjectId)
+                );
+
+                if (collection.Find(filtroYaAgregado).Any())
+                    return false;
+
+                // VALIDACIÓN 2: ¿El invitado tiene otro evento en ese rango de horas?
+                // Buscamos eventos donde el invitado ya esté Y los horarios se solapen.
+                var filtroConflicto = Builders<BsonDocument>.Filter.And(
+                    Builders<BsonDocument>.Filter.AnyEq("invitados", invitadoObjectId),
+                    Builders<BsonDocument>.Filter.Lt("fechahoraIniEvent", fechahoraFinEvent),
+                    Builders<BsonDocument>.Filter.Gt("fechahoraFinEvent", fechahoraIniEvent)
+                );
+
+                if (collection.Find(filtroConflicto).Any())
+                    return false;
+
+                // Las validaciones pasaron: agregar el ObjectId al array invitados
+                var filtroEvento = Builders<BsonDocument>.Filter.Eq(
+                    "_id", new ObjectId(idEvento));
+
+                var actualizacion = Builders<BsonDocument>.Update.Push(
+                    "invitados", invitadoObjectId);
+
+                collection.UpdateOne(filtroEvento, actualizacion);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+      
         public bool DeshabilitarEvento(ObjectId id)
         {
             try

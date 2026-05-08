@@ -1,9 +1,10 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using src.Controlador; // Para usar EventoControlador
+using src.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using src.Controlador; // Para usar EventoControlador
 
 namespace src.Vista
 {
@@ -50,7 +51,6 @@ namespace src.Vista
             dgvEventos.AutoGenerateColumns = false;
             dgvEventos.DataSource = eventos;
 
-            // Correcto
             _id.DataPropertyName = "Id";
             codigoEvent.DataPropertyName = "CodigoEvent";
             creadoPor.DataPropertyName = "CreadoPor";
@@ -109,12 +109,15 @@ namespace src.Vista
             form.Show();
         }
 
+        // refactorizar
+        // Investigar sobre lambda += (s, args) =>
         private void btnCrear_Click(object sender, EventArgs e)
         {
             FormCrearEvento frm = new FormCrearEvento(_idLider);
-            frm.FormClosed += (s, args) => CargarEventos();
+            frm.FormClosed += (s, args) => CargarEventos(); // Linea para cargar eventos luego de cerrar FormCrearEvento
             frm.Show();
         }
+
 
         private void btnDeshabilitarEvento_Click(object sender, EventArgs e)
         {
@@ -124,6 +127,12 @@ namespace src.Vista
             bool resultado = _eventoControlador.DeshabilitarEvento(id, nombre);
             if (resultado)
                 CargarEventos();
+
+        private void btnAgregarInvitado_Click(object sender, EventArgs e)
+        {
+            var eventoSeleccionado = (Evento)dgvEventos.CurrentRow.DataBoundItem; // se utiliza var para acceder indirectamente a modelo por medio de controlador infiriendolo
+            new FormAgregarInvitado(eventoSeleccionado.Id, eventoSeleccionado.FechahoraIniEvent, eventoSeleccionado.FechahoraFinEvent).ShowDialog();
+
         }
     }
 }

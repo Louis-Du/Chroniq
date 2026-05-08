@@ -42,7 +42,11 @@
             this.btnCrear = new MaterialSkin.Controls.MaterialButton();
             this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
             this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
+
             this.btnDeshabilitarEvento = new MaterialSkin.Controls.MaterialButton();
+
+            this.btnAgregarInvitado = new MaterialSkin.Controls.MaterialButton();
+
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,14 +153,16 @@
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnActualizar.HighEmphasis = true;
             this.btnActualizar.Icon = null;
-            this.btnActualizar.Location = new System.Drawing.Point(255, 409);
+
+            this.btnActualizar.Location = new System.Drawing.Point(294, 409);
+
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnActualizar.Size = new System.Drawing.Size(109, 36);
+            this.btnActualizar.Size = new System.Drawing.Size(168, 36);
             this.btnActualizar.TabIndex = 4;
-            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.Text = "Actualizar evento";
             this.btnActualizar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnActualizar.UseAccentColor = false;
             this.btnActualizar.UseVisualStyleBackColor = false;
@@ -171,14 +177,16 @@
             this.btnCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCrear.HighEmphasis = true;
             this.btnCrear.Icon = null;
-            this.btnCrear.Location = new System.Drawing.Point(138, 409);
+
+            this.btnCrear.Location = new System.Drawing.Point(56, 409);
+
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCrear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnCrear.Size = new System.Drawing.Size(67, 36);
+            this.btnCrear.Size = new System.Drawing.Size(127, 36);
             this.btnCrear.TabIndex = 5;
-            this.btnCrear.Text = "Crear";
+            this.btnCrear.Text = "Crear evento";
             this.btnCrear.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.btnCrear.UseAccentColor = false;
             this.btnCrear.UseVisualStyleBackColor = false;
@@ -212,6 +220,7 @@
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
             // 
+
             // btnDeshabilitarEvento
             // 
             this.btnDeshabilitarEvento.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -233,6 +242,29 @@
             this.btnDeshabilitarEvento.UseAccentColor = false;
             this.btnDeshabilitarEvento.UseVisualStyleBackColor = false;
             this.btnDeshabilitarEvento.Click += new System.EventHandler(this.btnDeshabilitarEvento_Click);
+
+            // btnAgregarInvitado
+            // 
+            this.btnAgregarInvitado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnAgregarInvitado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnAgregarInvitado.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnAgregarInvitado.Depth = 0;
+            this.btnAgregarInvitado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnAgregarInvitado.HighEmphasis = true;
+            this.btnAgregarInvitado.Icon = null;
+            this.btnAgregarInvitado.Location = new System.Drawing.Point(574, 409);
+            this.btnAgregarInvitado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnAgregarInvitado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAgregarInvitado.Name = "btnAgregarInvitado";
+            this.btnAgregarInvitado.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnAgregarInvitado.Size = new System.Drawing.Size(167, 36);
+            this.btnAgregarInvitado.TabIndex = 8;
+            this.btnAgregarInvitado.Text = "Agregar invitados";
+            this.btnAgregarInvitado.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnAgregarInvitado.UseAccentColor = false;
+            this.btnAgregarInvitado.UseVisualStyleBackColor = false;
+            this.btnAgregarInvitado.Click += new System.EventHandler(this.btnAgregarInvitado_Click);
+
             // 
             // FormLider
             // 
@@ -241,7 +273,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 475);
+
             this.Controls.Add(this.btnDeshabilitarEvento);
+
+            this.Controls.Add(this.btnAgregarInvitado);
+
             this.Controls.Add(this.lblNomlid);
             this.Controls.Add(this.lblBienv);
             this.Controls.Add(this.btnCrear);
@@ -271,6 +307,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn creadoPor;
         private System.Windows.Forms.DataGridViewTextBoxColumn _id;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoEvent;
+
         private MaterialSkin.Controls.MaterialButton btnDeshabilitarEvento;
+
+        private MaterialSkin.Controls.MaterialButton btnAgregarInvitado;
+
     }
 }
