@@ -14,46 +14,22 @@ namespace src.Vista
     public partial class FormActualizarEvento : BaseMaterialForm
     {
         private ObjectId _idEvento;
-        public FormActualizarEvento(string _id, int codigo, string nombre, string tipo, string fechaInicio, string fechaFin)
+        private readonly EventoControlador _eventoControlador;
+        public FormActualizarEvento(string _id, int codigo, string nombre, string tipo, string fechaHoraIni, string fechaHoraFin)
         {
             InitializeComponent();
+            _eventoControlador = new EventoControlador();
 
             // cargar los datos del evento en los controles del formulario
-
-            _idEvento = new ObjectId(_id);
-            txtNombreEvent.Text = nombre;
-            txtTipoEvent.Text = tipo;
-            dtpFechaHoraInicio.Value = DateTime.Parse(fechaInicio);
-            dtpFechaHoraFin.Value = DateTime.Parse(fechaFin);
+            dtpFechaHoraInicio.Value = DateTime.Parse(fechaHoraIni);
+            dtpFechaHoraFin.Value = DateTime.Parse(fechaHoraFin);
         }
 
         private void btnAcept_Click(object sender, EventArgs e)
         {
-            // Validaciones básicas
-            if (string.IsNullOrWhiteSpace(txtNombreEvent.Text) ||
-                string.IsNullOrWhiteSpace(txtTipoEvent.Text))
-            {
-                MessageBox.Show("Complete todos los campos");
-                return;
-            }
 
-            if (dtpFechaHoraFin.Value < dtpFechaHoraInicio.Value)
-            {
-                MessageBox.Show("La fecha final no puede ser menor a la inicial");
-                return;
-            }
-
-            //  Obtener datos del formulario
-            string nombre = txtNombreEvent.Text;
-            string tipo = txtTipoEvent.Text;
-            string fechaIni = dtpFechaHoraInicio.Value.ToString("yyyy-MM-dd HH:mm:ss");
-            string fechaFin = dtpFechaHoraFin.Value.ToString("yyyy-MM-dd HH:mm:ss");
-
-            // Llamar controlador
-            EventoControlador controlador = new EventoControlador();
-
-            bool actualizado = controlador.ActualizarEvento(
-                _idEvento, nombre, tipo, fechaIni, fechaFin
+            bool actualizado = _eventoControlador.ActualizarEvento(
+                txtNombreEvent.Text, txtTipoEvent.Text, dtpFechaHoraInicio.Value, dtpFechaHoraFin.Value, _idEvento
             );
 
             if (actualizado)

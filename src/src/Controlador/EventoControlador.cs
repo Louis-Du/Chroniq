@@ -152,11 +152,57 @@ namespace src.Controlador
             form.ShowDialog();
         }
 
-        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+        public bool DeshabilitarEvento(string id, string nombre)
         {
-            EventoModelo modelo = new EventoModelo();
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                MessageBox.Show("No hay ningún evento seleccionado.",
+                    "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
 
-            return modelo.ActualizarEvento(id, nombre, tipo, fechaIni, fechaFin);
+            if (!ObjectId.TryParse(id, out ObjectId objectId))
+            {
+                MessageBox.Show("El ID del evento no es válido.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            var confirmacion = MessageBox.Show(
+                $"¿Deseas deshabilitar el evento \'{nombre}\'?",
+                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes)
+                return false;
+
+            bool resultado = _eventoModelo.DeshabilitarEvento(objectId);
+
+            if (resultado)
+                MessageBox.Show("El evento fue deshabilitado correctamente.",
+                    "Evento deshabilitado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("No se pudo deshabilitar el evento.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            return resultado;
+        }
+
+        public bool ActualizarEvento(string nombreEvent, string tipoevent, DateTime fechaHoraIni, DateTime fechaHoraFin, ObjectId id)
+        {
+            // Validaciones básicas
+            if (string.IsNullOrWhiteSpace(nombreEvent) ||
+                string.IsNullOrWhiteSpace(tipoevent))
+            {
+                MessageBox.Show("Complete todos los campos");
+                return false;
+            }
+
+            if (fechaHoraFin < fechaHoraIni)
+            {
+                MessageBox.Show("La fecha final no puede ser menor a la inicial");
+                return false;
+            }
+            return _eventoModelo.ActualizarEvento(nombreEvent, tipoevent, fechaHoraIni, fechaHoraFin, id);
         }
     }
 }
