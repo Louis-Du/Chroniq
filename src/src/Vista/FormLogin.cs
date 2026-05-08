@@ -15,10 +15,7 @@ namespace src.Vista
             _loginControlador = new LoginControlador();
         }
 
-        private void swtOscuro_CheckedChanged(object sender, EventArgs e)
-        {
-            AlternarTema();
-        }
+
 
         private void btnSalirlogin_Click(object sender, EventArgs e)
         {

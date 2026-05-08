@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.swtOscuro = new MaterialSkin.Controls.MaterialSwitch();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.btnSalirlogin = new MaterialSkin.Controls.MaterialButton();
-            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.lblContraseña = new MaterialSkin.Controls.MaterialLabel();
             this.lblNomuser = new MaterialSkin.Controls.MaterialLabel();
@@ -38,24 +37,6 @@
             this.txtNumeroCedula = new MaterialSkin.Controls.MaterialTextBox2();
             this.btnIniciarsesion = new MaterialSkin.Controls.MaterialButton();
             this.SuspendLayout();
-            // 
-            // swtOscuro
-            // 
-            this.swtOscuro.AutoSize = true;
-            this.swtOscuro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.swtOscuro.Depth = 0;
-            this.swtOscuro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.swtOscuro.Location = new System.Drawing.Point(369, 166);
-            this.swtOscuro.Margin = new System.Windows.Forms.Padding(0);
-            this.swtOscuro.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.swtOscuro.MouseState = MaterialSkin.MouseState.HOVER;
-            this.swtOscuro.Name = "swtOscuro";
-            this.swtOscuro.Ripple = true;
-            this.swtOscuro.Size = new System.Drawing.Size(153, 37);
-            this.swtOscuro.TabIndex = 9;
-            this.swtOscuro.Text = "Modo Oscuro";
-            this.swtOscuro.UseVisualStyleBackColor = false;
-            this.swtOscuro.CheckedChanged += new System.EventHandler(this.swtOscuro_CheckedChanged);
             // 
             // btnSalirlogin
             // 
@@ -78,21 +59,6 @@
             this.btnSalirlogin.UseAccentColor = true;
             this.btnSalirlogin.UseVisualStyleBackColor = false;
             this.btnSalirlogin.Click += new System.EventHandler(this.btnSalirlogin_Click);
-            // 
-            // materialLabel4
-            // 
-            this.materialLabel4.AutoSize = true;
-            this.materialLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.materialLabel4.Depth = 0;
-            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.SubtleEmphasis;
-            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(366, 373);
-            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel4.Name = "materialLabel4";
-            this.materialLabel4.Size = new System.Drawing.Size(179, 14);
-            this.materialLabel4.TabIndex = 7;
-            this.materialLabel4.Text = "¿no te has registrado? entra aquí";
             // 
             // materialLabel3
             // 
@@ -223,10 +189,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 684);
-            this.Controls.Add(this.swtOscuro);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(976, 723);
             this.Controls.Add(this.btnSalirlogin);
-            this.Controls.Add(this.materialLabel4);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblNomuser);
@@ -250,8 +216,6 @@
         private MaterialSkin.Controls.MaterialLabel lblNomuser;
         private MaterialSkin.Controls.MaterialLabel lblContraseña;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialButton btnSalirlogin;
-        private MaterialSkin.Controls.MaterialSwitch swtOscuro;
     }
 }

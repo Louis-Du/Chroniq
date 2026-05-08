@@ -42,11 +42,8 @@
             this.btnCrear = new MaterialSkin.Controls.MaterialButton();
             this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
             this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
-
             this.btnDeshabilitarEvento = new MaterialSkin.Controls.MaterialButton();
-
             this.btnAgregarInvitado = new MaterialSkin.Controls.MaterialButton();
-
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -153,9 +150,7 @@
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnActualizar.HighEmphasis = true;
             this.btnActualizar.Icon = null;
-
-            this.btnActualizar.Location = new System.Drawing.Point(294, 409);
-
+            this.btnActualizar.Location = new System.Drawing.Point(215, 409);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizar.Name = "btnActualizar";
@@ -177,9 +172,7 @@
             this.btnCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCrear.HighEmphasis = true;
             this.btnCrear.Icon = null;
-
             this.btnCrear.Location = new System.Drawing.Point(56, 409);
-
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCrear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCrear.Name = "btnCrear";
@@ -220,7 +213,6 @@
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
             // 
-
             // btnDeshabilitarEvento
             // 
             this.btnDeshabilitarEvento.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -242,7 +234,7 @@
             this.btnDeshabilitarEvento.UseAccentColor = false;
             this.btnDeshabilitarEvento.UseVisualStyleBackColor = false;
             this.btnDeshabilitarEvento.Click += new System.EventHandler(this.btnDeshabilitarEvento_Click);
-
+            // 
             // btnAgregarInvitado
             // 
             this.btnAgregarInvitado.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -264,7 +256,6 @@
             this.btnAgregarInvitado.UseAccentColor = false;
             this.btnAgregarInvitado.UseVisualStyleBackColor = false;
             this.btnAgregarInvitado.Click += new System.EventHandler(this.btnAgregarInvitado_Click);
-
             // 
             // FormLider
             // 
@@ -273,11 +264,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 475);
-
             this.Controls.Add(this.btnDeshabilitarEvento);
-
             this.Controls.Add(this.btnAgregarInvitado);
-
             this.Controls.Add(this.lblNomlid);
             this.Controls.Add(this.lblBienv);
             this.Controls.Add(this.btnCrear);
