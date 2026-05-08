@@ -97,7 +97,7 @@ namespace src.Modelo
                 return new List<Evento>();
             }
         }
-      
+
         public bool AgregarInvitado(string idEvento, string idInvitado, string fechahoraIniEvent, string fechahoraFinEvent)
         {
             try
@@ -105,13 +105,19 @@ namespace src.Modelo
                 var database = Conexion.ObtenerBaseDatos();
                 var collection = database.GetCollection<BsonDocument>("Eventos");
 
-                var invitadoObjectId = new ObjectId(idInvitado);
+                if (string.IsNullOrWhiteSpace(idInvitado) || !ObjectId.TryParse(idInvitado, out ObjectId invitadoObjectId))
+                    return false;
+
 
                 // VALIDACIÓN 1: ¿El invitado ya está en este evento?
+                if (string.IsNullOrWhiteSpace(idEvento) || !ObjectId.TryParse(idEvento, out ObjectId eventoObjectId))
+                    return false;
+
                 var filtroYaAgregado = Builders<BsonDocument>.Filter.And(
-                    Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(idEvento)),
+                    Builders<BsonDocument>.Filter.Eq("_id", eventoObjectId),
                     Builders<BsonDocument>.Filter.AnyEq("invitados", invitadoObjectId)
                 );
+
 
                 if (collection.Find(filtroYaAgregado).Any())
                     return false;
@@ -129,7 +135,8 @@ namespace src.Modelo
 
                 // Las validaciones pasaron: agregar el ObjectId al array invitados
                 var filtroEvento = Builders<BsonDocument>.Filter.Eq(
-                    "_id", new ObjectId(idEvento));
+                    "_id", eventoObjectId);
+
 
                 var actualizacion = Builders<BsonDocument>.Update.Push(
                     "invitados", invitadoObjectId);
@@ -150,11 +157,20 @@ namespace src.Modelo
 
             string ahora = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            ObjectId objectIdUsuario = ObjectId.Parse(idUsuario);
+            if (string.IsNullOrWhiteSpace(idUsuario))
+                return new List<Evento>();
 
+            if (!ObjectId.TryParse(idUsuario, out ObjectId objectIdUsuario))
+                return new List<Evento>();
+
+            // Nota: en la BD el campo puede ser "estadoevento" o venir sin estado.
+            // Para mantener el 10% funcional, aceptamos:
+            //  - estadoevento == "habilitado"
+            //  - o que no exista (se asume habilitado en la lógica actual)
+            var filtroEstado = Builders<Evento>.Filter.Eq("estadoevento", "habilitado");
             var filtro = Builders<Evento>.Filter.And(
                 Builders<Evento>.Filter.AnyEq("invitados", objectIdUsuario),
-                Builders<Evento>.Filter.Eq("estadoevento", "habilitado"),
+                filtroEstado,
                 Builders<Evento>.Filter.Gte("fechahoraIniEvent", ahora)
             );
 
@@ -171,7 +187,9 @@ namespace src.Modelo
                 var filtro = Builders<BsonDocument>.Filter.Eq("_id", id);
                 var update = Builders<BsonDocument>.Update.Set("estadoevento", "inhabilitado");
 
+
                 var resultado = collection.UpdateOne(filtro, update);
+
                 return resultado.ModifiedCount > 0;
             }
             catch

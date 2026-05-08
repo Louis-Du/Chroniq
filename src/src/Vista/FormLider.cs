@@ -93,7 +93,14 @@ namespace src.Vista
             }
 
             string _id = fila.Cells["_id"].Value.ToString();
-            int codigo = int.Parse(fila.Cells["codigoEvent"].Value.ToString());
+
+            int codigo;
+            if (fila.Cells["codigoEvent"].Value == null || !int.TryParse(fila.Cells["codigoEvent"].Value.ToString(), out codigo))
+            {
+                MessageBox.Show("Código de evento inválido");
+                return;
+            }
+
             string nombre = fila.Cells["NombreEvent"].Value.ToString();
             string tipo = fila.Cells["TipoEvent"].Value.ToString();
             string fechaInicio = fila.Cells["FechahoraIniEvent"].Value.ToString();
@@ -127,6 +134,7 @@ namespace src.Vista
             bool resultado = _eventoControlador.DeshabilitarEvento(id, nombre);
             if (resultado)
                 CargarEventos();
+        }
 
         private void btnAgregarInvitado_Click(object sender, EventArgs e)
         {

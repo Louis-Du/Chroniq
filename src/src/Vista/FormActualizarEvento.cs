@@ -21,8 +21,24 @@ namespace src.Vista
             _eventoControlador = new EventoControlador();
 
             // cargar los datos del evento en los controles del formulario
-            dtpFechaHoraInicio.Value = DateTime.Parse(fechaHoraIni);
-            dtpFechaHoraFin.Value = DateTime.Parse(fechaHoraFin);
+            DateTime parsedInicio;
+            DateTime parsedFin;
+
+            if (!DateTime.TryParse(fechaHoraIni, out parsedInicio))
+                parsedInicio = DateTime.Now;
+
+            if (!DateTime.TryParse(fechaHoraFin, out parsedFin))
+                parsedFin = DateTime.Now;
+
+            dtpFechaHoraInicio.Value = parsedInicio;
+            dtpFechaHoraFin.Value = parsedFin;
+
+            // Cargar texto en los inputs
+            txtNombreEvent.Text = nombre;
+            txtTipoEvent.Text = tipo;
+
+            _idEvento = MongoDB.Bson.ObjectId.Parse(_id);
+
         }
 
         private void btnAcept_Click(object sender, EventArgs e)

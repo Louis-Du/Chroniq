@@ -184,6 +184,12 @@
     <Compile Include="Vista\FormCrearEvento.Designer.cs">
       <DependentUpon>FormCrearEvento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\FormCrearInvitado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FormCrearInvitado.Designer.cs">
+      <DependentUpon>FormCrearInvitado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\FormInvitado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormCrearEvento.resx">
       <DependentUpon>FormCrearEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\FormCrearInvitado.resx">
+      <DependentUpon>FormCrearInvitado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\FormInvitado.resx">
       <DependentUpon>FormInvitado.cs</DependentUpon>
