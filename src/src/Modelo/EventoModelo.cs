@@ -87,6 +87,24 @@ namespace src.Modelo
             }
         }
 
+        public bool DeshabilitarEvento(ObjectId id)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<BsonDocument>("Eventos");
+
+                var filtro = Builders<BsonDocument>.Filter.Eq("_id", id);
+                var update = Builders<BsonDocument>.Update.Set("estadoevento", "inhabilitado");
+
+                var resultado = collection.UpdateOne(filtro, update);
+                return resultado.ModifiedCount > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public bool ActualizarEvento(string nombre, string tipo, DateTime fechaIni, DateTime fechaFin, ObjectId id)
         {

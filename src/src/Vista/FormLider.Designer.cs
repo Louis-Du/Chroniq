@@ -28,19 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLider));
             this.dgvEventos = new System.Windows.Forms.DataGridView();
             this.nombreEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraIniEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechahoraFinEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.creadoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnVolver = new MaterialSkin.Controls.MaterialButton();
             this.btnActualizar = new MaterialSkin.Controls.MaterialButton();
             this.btnCrear = new MaterialSkin.Controls.MaterialButton();
             this.lblBienv = new MaterialSkin.Controls.MaterialLabel();
             this.lblNomlid = new MaterialSkin.Controls.MaterialLabel();
-            this._id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoEvent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeshabilitarEvento = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEventos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,6 +104,20 @@
             this.creadoPor.ReadOnly = true;
             this.creadoPor.Width = 150;
             // 
+            // _id
+            // 
+            this._id.HeaderText = "id";
+            this._id.Name = "_id";
+            this._id.ReadOnly = true;
+            this._id.Visible = false;
+            // 
+            // codigoEvent
+            // 
+            this.codigoEvent.HeaderText = "codigoEvent";
+            this.codigoEvent.Name = "codigoEvent";
+            this.codigoEvent.ReadOnly = true;
+            this.codigoEvent.Visible = false;
+            // 
             // btnVolver
             // 
             this.btnVolver.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -133,7 +149,7 @@
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnActualizar.HighEmphasis = true;
             this.btnActualizar.Icon = null;
-            this.btnActualizar.Location = new System.Drawing.Point(445, 409);
+            this.btnActualizar.Location = new System.Drawing.Point(255, 409);
             this.btnActualizar.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnActualizar.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnActualizar.Name = "btnActualizar";
@@ -155,7 +171,7 @@
             this.btnCrear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnCrear.HighEmphasis = true;
             this.btnCrear.Icon = null;
-            this.btnCrear.Location = new System.Drawing.Point(243, 409);
+            this.btnCrear.Location = new System.Drawing.Point(138, 409);
             this.btnCrear.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.btnCrear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCrear.Name = "btnCrear";
@@ -196,25 +212,36 @@
             this.lblNomlid.TabIndex = 7;
             this.lblNomlid.Text = "materialLabel2";
             // 
-            // _id
+            // btnDeshabilitarEvento
             // 
-            this._id.HeaderText = "id";
-            this._id.Name = "_id";
-            this._id.ReadOnly = true;
-            this._id.Visible = false;
-            // 
-            // codigoEvent
-            // 
-            this.codigoEvent.HeaderText = "codigoEvent";
-            this.codigoEvent.Name = "codigoEvent";
-            this.codigoEvent.ReadOnly = true;
-            this.codigoEvent.Visible = false;
+            this.btnDeshabilitarEvento.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnDeshabilitarEvento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnDeshabilitarEvento.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnDeshabilitarEvento.Depth = 0;
+            this.btnDeshabilitarEvento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDeshabilitarEvento.HighEmphasis = true;
+            this.btnDeshabilitarEvento.Icon = null;
+            this.btnDeshabilitarEvento.Location = new System.Drawing.Point(430, 409);
+            this.btnDeshabilitarEvento.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnDeshabilitarEvento.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDeshabilitarEvento.Name = "btnDeshabilitarEvento";
+            this.btnDeshabilitarEvento.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnDeshabilitarEvento.Size = new System.Drawing.Size(122, 36);
+            this.btnDeshabilitarEvento.TabIndex = 8;
+            this.btnDeshabilitarEvento.Text = "Deshabilitar";
+            this.btnDeshabilitarEvento.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnDeshabilitarEvento.UseAccentColor = false;
+            this.btnDeshabilitarEvento.UseVisualStyleBackColor = false;
+            this.btnDeshabilitarEvento.Click += new System.EventHandler(this.btnDeshabilitarEvento_Click);
             // 
             // FormLider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(800, 475);
+            this.Controls.Add(this.btnDeshabilitarEvento);
             this.Controls.Add(this.lblNomlid);
             this.Controls.Add(this.lblBienv);
             this.Controls.Add(this.btnCrear);
@@ -244,5 +271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn creadoPor;
         private System.Windows.Forms.DataGridViewTextBoxColumn _id;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoEvent;
+        private MaterialSkin.Controls.MaterialButton btnDeshabilitarEvento;
     }
 }

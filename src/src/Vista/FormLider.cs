@@ -115,5 +115,15 @@ namespace src.Vista
             frm.FormClosed += (s, args) => CargarEventos();
             frm.Show();
         }
+
+        private void btnDeshabilitarEvento_Click(object sender, EventArgs e)
+        {
+            string id = dgvEventos.CurrentRow?.Cells["_id"].Value?.ToString() ?? "";
+            string nombre = dgvEventos.CurrentRow?.Cells["NombreEvent"].Value?.ToString() ?? "";
+
+            bool resultado = _eventoControlador.DeshabilitarEvento(id, nombre);
+            if (resultado)
+                CargarEventos();
+        }
     }
 }

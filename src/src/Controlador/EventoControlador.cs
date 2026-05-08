@@ -88,6 +88,41 @@ namespace src.Controlador
             form.ShowDialog();
         }
 
+        public bool DeshabilitarEvento(string id, string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                MessageBox.Show("No hay ningún evento seleccionado.",
+                    "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!ObjectId.TryParse(id, out ObjectId objectId))
+            {
+                MessageBox.Show("El ID del evento no es válido.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            var confirmacion = MessageBox.Show(
+                $"¿Deseas deshabilitar el evento \'{nombre}\'?",
+                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes)
+                return false;
+
+            bool resultado = _eventoModelo.DeshabilitarEvento(objectId);
+
+            if (resultado)
+                MessageBox.Show("El evento fue deshabilitado correctamente.",
+                    "Evento deshabilitado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+                MessageBox.Show("No se pudo deshabilitar el evento.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            return resultado;
+        }
+
         public bool ActualizarEvento(string nombreEvent, string tipoevent, DateTime fechaHoraIni, DateTime fechaHoraFin, ObjectId id)
         {
             // Validaciones básicas
