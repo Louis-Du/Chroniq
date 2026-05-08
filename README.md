@@ -21,7 +21,7 @@
 
 **Chroniq** es una aplicación de escritorio robusta para la gestión integral de eventos. Desarrollada con **.NET Framework 4.7.2** y **MongoDB**, proporciona una interfaz intuitiva basada en WinForms que permite crear, consultar, actualizar y gestionar eventos de forma eficiente.
 
-La aplicación implementa un sistema de roles (líder e invitado) para controlar el acceso y las permisos, asegurando que cada usuario tenga las funcionalidades apropiadas para su rol.
+La aplicación implementa un sistema de roles (líder e invitado) para controlar el acceso y los permisos, asegurando que cada usuario tenga las funcionalidades apropiadas para su rol.
 
 ---
 
@@ -204,27 +204,6 @@ Chroniq/
 - **Variables Locales:** `camelCase` (ej: `nombreUsuario`, `fechaEvento`)
 - **Constantes:** `UPPER_SNAKE_CASE` (ej: `CONEXION_TIMEOUT`)
 
-### Estructura de Clase
-```csharp
-public class MiClase
-{
-    // Campos privados
-    private string _campo;
-    
-    // Propiedades públicas
-    public string Propiedad { get; set; }
-    
-    // Constructor
-    public MiClase() { }
-    
-    // Métodos públicos
-    public void MetodoPublico() { }
-    
-    // Métodos privados
-    private void MetodoPrivado() { }
-}
-```
-
 ---
 
 ## 💾 Configuración de Base de Datos
@@ -236,15 +215,6 @@ La aplicación utiliza MongoDB para persistencia de datos. Las colecciones princ
 | `usuarios` | Registros de usuarios del sistema |
 | `eventos` | Información de eventos |
 | `invitados` | Participantes en eventos |
-
-### String de Conexión (App.config)
-```xml
-<connectionStrings>
-    <add name="MongoDB" 
-         connectionString="mongodb://localhost:27017/chroniq" 
-         providerName="MongoDB" />
-</connectionStrings>
-```
 
 ---
 
@@ -261,13 +231,6 @@ msbuild src.csproj /p:Configuration=Debug
 cd src
 msbuild src.csproj /p:Configuration=Release
 ```
-
-### Crear Instalador (Opcional)
-Para empaquetar la aplicación como instalable, considera usar herramientas como:
-- **Visual Studio Installer Projects**
-- **WiX Toolset**
-- **NSIS (Nullsoft Scriptable Install System)**
-
 ---
 
 ## 🐛 Solución de Problemas
@@ -290,32 +253,6 @@ Para empaquetar la aplicación como instalable, considera usar herramientas como
 3. **Crear formulario en Vista/** para la interfaz
 4. **Conectar Vista → Controlador → Modelo**
 5. **Probar y validar**
-
-### Ejemplo: Nuevo Formulario
-```csharp
-// 1. Vista
-public partial class FormNuevo : Form
-{
-    private ControladorNuevo _controlador;
-    
-    public FormNuevo()
-    {
-        InitializeComponent();
-        _controlador = new ControladorNuevo();
-    }
-}
-
-// 2. Controlador
-public class ControladorNuevo
-{
-    public void Procesar(Entidad datos)
-    {
-        // Validaciones
-        // Lógica de negocio
-    }
-}
-```
-
 ---
 
 ## 📋 Estado del Proyecto
@@ -325,7 +262,6 @@ public class ControladorNuevo
 - ✅ **Sistema de roles**
 - 🟡 **Reportes y estadísticas** (En desarrollo)
 - 🟡 **Exportación de datos** (En desarrollo)
-- ⏳ **API REST** (Planeado)
 
 ---
 
@@ -346,44 +282,34 @@ Las contribuciones son bienvenidas. Por favor:
 - Actualiza la documentación
 
 ---
-
-## 📄 Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-```
-MIT License
-
-Copyright (c) 2024 Louis-Du
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software...
-```
-
----
-
-## 📞 Contacto y Soporte
-
-- 📧 **Email:** [Tu email aquí]
-- 🐙 **GitHub:** [Louis-Du](https://github.com/Louis-Du)
-- 💬 **Issues:** Reporta bugs y sugerencias en [GitHub Issues](https://github.com/Louis-Du/Chroniq/issues)
-
----
-
-## 🙏 Agradecimientos
-
-- MaterialSkin por el tema Visual Design
-- MongoDB por la base de datos robusta
-- Microsoft .NET Team por el framework sólido
-
----
-
+## 👥 Colaboradores
 <div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/eljavi0">
+        <img src="https://github.com/eljavi0.png" width="100" style="border-radius: 50%" /><br />
+        <sub><b>eljavi0</b></sub>
+      </a><br />
+      <sub>Desarrollador</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Louis-Du">
+        <img src="https://github.com/Louis-Du.png" width="100" style="border-radius:50%" /><br />
+        <sub><b>Louis-Du</b></sub>
+      </a><br />
+      <sub>Desarrollador</sub>
+    </td>
+    <td align="center">
+      <a href="https://github.com/lukasa133">
+        <img src="https://github.com/lukasa133.png" width="100" style="border-radius:50%" /><br />
+        <sub><b>lukasa133</b></sub>
+      </a><br />
+      <sub>Desarrollador</sub>
+    </td>
+  </tr>
+</table>
 
-**Hecho con ❤️ por Louis-Du**
 
 ⭐ Si este proyecto te fue útil, considera darle una estrella en GitHub
 
