@@ -29,6 +29,9 @@ namespace src.Modelo
         [BsonElement("fechahoraFinEvent")]
         public string FechahoraFinEvent { get; set; }
 
+        [BsonElement("estadoevento")]
+        public string EstadoEvento { get; set; }
+
         // CORRECCIÓN: agregar [BsonRepresentation(BsonType.ObjectId)] para que
         // el driver de MongoDB pueda convertir ObjectId ↔ string en cada elemento.
         // Sin este atributo lanza: "Cannot deserialize a 'String' from BsonType 'ObjectId'"

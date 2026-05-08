@@ -155,9 +155,11 @@
   <ItemGroup>
     <Compile Include="Controlador\EventoControlador.cs" />
     <Compile Include="Controlador\LoginControlador.cs" />
+    <Compile Include="Controlador\UsuarioControlador.cs" />
     <Compile Include="Modelo\Conexion.cs" />
     <Compile Include="Modelo\Evento.cs" />
     <Compile Include="Modelo\EventoModelo.cs" />
+    <Compile Include="Modelo\Usuario.cs" />
     <Compile Include="Modelo\UsuarioModelo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

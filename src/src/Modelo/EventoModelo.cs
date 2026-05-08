@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -91,7 +91,7 @@ namespace src.Modelo
 
                 return eventos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message); // ver qué excepción está ocurriendo
                 return new List<Evento>();
@@ -161,7 +161,26 @@ namespace src.Modelo
             return collection.Find(filtro).ToList();
         }
 
-        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+        public bool DeshabilitarEvento(ObjectId id)
+        {
+            try
+            {
+                var database = Conexion.ObtenerBaseDatos();
+                var collection = database.GetCollection<BsonDocument>("Eventos");
+
+                var filtro = Builders<BsonDocument>.Filter.Eq("_id", id);
+                var update = Builders<BsonDocument>.Update.Set("estadoevento", "inhabilitado");
+
+                var resultado = collection.UpdateOne(filtro, update);
+                return resultado.ModifiedCount > 0;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public bool ActualizarEvento(string nombre, string tipo, DateTime fechaIni, DateTime fechaFin, ObjectId id)
         {
             try
             {

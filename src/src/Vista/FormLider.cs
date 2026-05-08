@@ -118,10 +118,21 @@ namespace src.Vista
             frm.Show();
         }
 
+
+        private void btnDeshabilitarEvento_Click(object sender, EventArgs e)
+        {
+            string id = dgvEventos.CurrentRow?.Cells["_id"].Value?.ToString() ?? "";
+            string nombre = dgvEventos.CurrentRow?.Cells["NombreEvent"].Value?.ToString() ?? "";
+
+            bool resultado = _eventoControlador.DeshabilitarEvento(id, nombre);
+            if (resultado)
+                CargarEventos();
+
         private void btnAgregarInvitado_Click(object sender, EventArgs e)
         {
             var eventoSeleccionado = (Evento)dgvEventos.CurrentRow.DataBoundItem; // se utiliza var para acceder indirectamente a modelo por medio de controlador infiriendolo
             new FormAgregarInvitado(eventoSeleccionado.Id, eventoSeleccionado.FechahoraIniEvent, eventoSeleccionado.FechahoraFinEvent).ShowDialog();
+
         }
     }
 }

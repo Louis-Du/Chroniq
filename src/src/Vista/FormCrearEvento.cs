@@ -39,8 +39,11 @@ namespace src.Vista
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            // HACER DIALOGO DE CONFIRMACIÓN
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Estás seguro que deseas cancelar la creación del evento?", "Volver al menú anterior", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
