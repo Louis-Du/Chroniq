@@ -33,31 +33,31 @@ namespace src.Controlador
 
                 Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(numeroCedula, passwordUser);
 
-            if (usuarioEncontrado == null)
-            {
-                MessageBox.Show("Usuario o contraseña incorrectos. Intenta de nuevo.",
-                    "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                if (usuarioEncontrado == null)
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos. Intenta de nuevo.",
+                        "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            if (usuarioEncontrado.TipoUser == "Lider")
-            {
-                AbrirFormulario(
-                    new FormLider(usuarioEncontrado.NombreUser, usuarioEncontrado.Id),
-                    formularioActual);
-            }
-            else if (usuarioEncontrado.TipoUser == "Invitado")
-            {
-                AbrirFormulario(
-                    new FormInvitado(usuarioEncontrado.NombreUser),
-                    formularioActual);
-            }
-            else
-            {
-                MessageBox.Show(
-                    $"El tipo de usuario '{usuarioEncontrado.TipoUser}' no está configurado en el sistema.",
-                    "Error de configuración", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                if (usuarioEncontrado.TipoUser == "Lider")
+                {
+                    AbrirFormulario(
+                        new FormLider(usuarioEncontrado.NombreUser, usuarioEncontrado.Id),
+                        formularioActual);
+                }
+                else if (usuarioEncontrado.TipoUser == "Invitado")
+                {
+                    AbrirFormulario(
+                        new FormInvitado(usuarioEncontrado.NombreUser, usuarioEncontrado.Id),
+                        formularioActual);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        $"El tipo de usuario '{usuarioEncontrado.TipoUser}' no está configurado en el sistema.",
+                        "Error de configuración", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {

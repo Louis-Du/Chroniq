@@ -152,6 +152,13 @@ namespace src.Controlador
             form.ShowDialog();
         }
 
+
+
+        public List<Evento> ObtenerEventosPorInvitado(string idUsuario)
+        {
+            return _eventoModelo.ObtenerEventosPorInvitado(idUsuario);
+        }
+
         public bool DeshabilitarEvento(string id, string nombre)
         {
             if (string.IsNullOrWhiteSpace(id))
