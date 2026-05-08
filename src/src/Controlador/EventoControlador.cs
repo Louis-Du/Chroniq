@@ -18,6 +18,10 @@ namespace src.Controlador
         private readonly EventoModelo _eventoModelo;
         private readonly UsuarioModelo _usuarioModelo;
 
+        // Convertimos la fecha actual al mismo formato string de la BD
+        // para que el Modelo pueda comparar directamente.
+        string ahora = DateTime.Now.ToString(FORMATO_FECHA_BD);
+
         public EventoControlador()
         {
             _eventoModelo = new EventoModelo();
@@ -47,6 +51,25 @@ namespace src.Controlador
                 return null;
             }
 
+            // Intentamos convertir el texto 'ahora' a una fecha real
+            if (DateTime.TryParse(ahora, out DateTime fechaActual))
+            {
+                // Comparamos las dos fechas
+                if (fechaActual <= fechaHoraInicio)
+                {
+                    MessageBox.Show("La fecha y hora de inicio debe ser posterior a la actual.",
+                                    "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return null;
+                }
+
+                if (fechaActual <= fechaHoraFin)
+                {
+                    MessageBox.Show("La fecha y hora de fin debe ser posterior a la actual.",
+                                    "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return null;
+                }
+            }
+
             // Convertir DateTime a string con el formato de la BD.
             // La BD guarda las fechas como texto: "2026-05-15 09:30:00"
             string fechaIniStr = fechaHoraInicio.ToString(FORMATO_FECHA_BD);
@@ -70,10 +93,6 @@ namespace src.Controlador
 
         public List<Evento> ConsultarEventos()
         {
-            // Convertimos la fecha actual al mismo formato string de la BD
-            // para que el Modelo pueda comparar directamente.
-            string ahora = DateTime.Now.ToString(FORMATO_FECHA_BD);
-
             List<Evento> eventos = _eventoModelo.ObtenerEventos(ahora);
 
             if (eventos.Count == 0)
@@ -99,7 +118,7 @@ namespace src.Controlador
             List<Usuario> disponibles = new List<Usuario>();
             foreach (Usuario usuario in todos)
             {
-                if (!idsInscritos.Contains(usuario.Id)) 
+                if (!idsInscritos.Contains(usuario.Id))
                 {
                     disponibles.Add(usuario);
                 }
@@ -151,8 +170,6 @@ namespace src.Controlador
             );
             form.ShowDialog();
         }
-
-
 
         public List<Evento> ObtenerEventosPorInvitado(string idUsuario)
         {
@@ -209,6 +226,26 @@ namespace src.Controlador
                 MessageBox.Show("La fecha final no puede ser menor a la inicial");
                 return false;
             }
+
+            // Intentamos convertir el texto 'ahora' a una fecha real
+            if (DateTime.TryParse(ahora, out DateTime fechaActual))
+            {
+                // Comparamos las dos fechas
+                if (fechaActual <= fechaHoraIni)
+                {
+                    MessageBox.Show("La fecha y hora de inicio debe ser posterior a la actual.",
+                                    "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                if (fechaActual <= fechaHoraFin)
+                {
+                    MessageBox.Show("La fecha y hora de fin debe ser posterior a la actual.",
+                                    "Rango de fechas inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+
             return _eventoModelo.ActualizarEvento(nombreEvent, tipoevent, fechaHoraIni, fechaHoraFin, id);
         }
     }
