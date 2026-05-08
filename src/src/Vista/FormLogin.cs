@@ -1,45 +1,29 @@
 ﻿using MaterialSkin;
 using src.Controlador;
 using System;
-using System.Drawing;
-using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace src.Vista
 {
     public partial class FormLogin : BaseMaterialForm
     {
-
         private readonly LoginControlador _loginControlador;
 
-        /// <summary>
-        /// Constructor del formulario de login.
-        /// Aquí inicializamos el controlador que vamos a usar.
-        /// </summary>
         public FormLogin()
         {
             InitializeComponent();
             _loginControlador = new LoginControlador();
-
         }
 
         private void swtOscuro_CheckedChanged(object sender, EventArgs e)
         {
-            AlternarTema(); // Llama al método de la clase base (Vista/BaseMaterialForm.cs)
+            AlternarTema();
         }
 
-        // -------------------------------------------------------
-        //  EVENTO: Clic en el botón "Salir".
-        //  Confirma y cierra la aplicación.
-        //  Lógica de UI pura → queda en la Vista.
-        // -------------------------------------------------------
         private void btnSalirlogin_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(
-                "¿Desea salir de la aplicación?",
-                "Confirmar salida",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("¿Desea salir de la aplicación?", "Confirmar salida",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -47,21 +31,24 @@ namespace src.Vista
 
         private void btnIniciarsesion_Click_1(object sender, EventArgs e)
         {
-            // PASO 1: Leemos los valores el formulario (solo la Vista sabe dónde están).
-            int numeroCedula = int.Parse(txtNumeroCedula.Text.Trim());
-            string passwordIngresada = txtContraseña.Text.Trim();
+            // CORRECCIÓN: TryParse en lugar de Parse para evitar crash si el campo está vacío o tiene texto pegado.
+            if (!int.TryParse(txtNumeroCedula.Text.Trim(), out int numeroCedula))
+            {
+                MessageBox.Show("Ingresa un número de cédula válido.",
+                    "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            // PASO 2: Delegamos la lógica al Controlador.
-            // Llamada a: Controlador/LoginControlador.cs → método IniciarSesion(...)
-            // El Controlador validará, consultará el Modelo y abrirá el formulario correcto.
+            string passwordIngresada = txtContraseña.Text.Trim();
             _loginControlador.IniciarSesion(numeroCedula, passwordIngresada, this);
         }
 
+        // Bloquea caracteres no numéricos en el campo de cédula a nivel de teclado.
         private void txtNumeroCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; // Evita que se ingresen caracteres no numéricos
+                e.Handled = true;
                 MessageBox.Show("Solo se permiten números en el campo de ID de usuario.", "APLICACION");
             }
         }
