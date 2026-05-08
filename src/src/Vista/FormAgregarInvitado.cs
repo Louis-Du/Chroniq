@@ -94,5 +94,12 @@ namespace src.Vista
                 CargarUsuariosDisponibles();
             }
         }
+
+        private void btnCrearNuevoUsuario_Click(object sender, EventArgs e)
+        {
+            FormCrearInvitado frm = new FormCrearInvitado();
+            frm.FormClosed += (s, args) => CargarUsuariosDisponibles(); // Linea para cargar eventos luego de cerrar FormCrearEvento
+            frm.Show();
+        }
     }
 }
