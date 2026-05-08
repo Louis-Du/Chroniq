@@ -28,10 +28,31 @@ namespace src.Vista
 
         private void materialButton1_Click(object sender, EventArgs e)
         {
-            bool ok = _usuarioControlador.CrearNuevoInvitado(txtNombre.Text, cbGenero.Text, txtEmail.Text, long.Parse(txtTelefono.Text), int.Parse(txtEdad.Text), int.Parse(txtCedula.Text), txtPassword.Text);
-            if (ok)
+            if (txtTelefono.ToString().Length > 10)
             {
-                this.Close();
+                MessageBox.Show("Haz alcanzado el limite de caracteres para el número de telefono.",
+                    "Longitud inadecuada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (txtEdad.ToString().Length > 2)
+            {
+                MessageBox.Show("Haz alcanzado el limite de caracteres para la edad.",
+                    "Longitud inadecuada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            if (txtCedula.ToString().Length > 10)
+            {
+                MessageBox.Show("Haz alcanzado el limite de caracteres para el número de cedula.",
+                    "Longitud inadecuada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            else
+            {
+                bool ok = _usuarioControlador.CrearNuevoInvitado(txtNombre.Text, cbGenero.Text, txtEmail.Text, long.Parse(txtTelefono.Text), int.Parse(txtEdad.Text), int.Parse(txtCedula.Text), txtPassword.Text);
+                if (ok)
+                {
+                    this.Close();
+                }
             }
         }
 

@@ -68,8 +68,11 @@ namespace src.Vista
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            // Agrega dialogo Lukas
-            this.Close();
+            DialogResult result = MessageBox.Show("¿Estás seguro que dejar de agregar invitados?", "Volver al menú anterior", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void btnInvitarUsuario_Click(object sender, EventArgs e)
@@ -98,7 +101,7 @@ namespace src.Vista
         private void btnCrearNuevoUsuario_Click(object sender, EventArgs e)
         {
             FormCrearInvitado frm = new FormCrearInvitado();
-            frm.FormClosed += (s, args) => CargarUsuariosDisponibles(); // Linea para cargar eventos luego de cerrar FormCrearEvento
+            frm.FormClosed += (s, args) => CargarUsuariosDisponibles();             
             frm.Show();
         }
     }
