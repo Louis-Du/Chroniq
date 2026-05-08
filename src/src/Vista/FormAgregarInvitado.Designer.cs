@@ -44,6 +44,7 @@
             this.generoInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoInscrito = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCrearNuevoUsuario = new MaterialSkin.Controls.MaterialButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuariosDisponibles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInscritos)).BeginInit();
             this.SuspendLayout();
@@ -218,11 +219,34 @@
             this.telefonoInscrito.ReadOnly = true;
             this.telefonoInscrito.Width = 150;
             // 
+            // btnCrearNuevoUsuario
+            // 
+            this.btnCrearNuevoUsuario.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCrearNuevoUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.btnCrearNuevoUsuario.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.btnCrearNuevoUsuario.Depth = 0;
+            this.btnCrearNuevoUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnCrearNuevoUsuario.HighEmphasis = true;
+            this.btnCrearNuevoUsuario.Icon = null;
+            this.btnCrearNuevoUsuario.Location = new System.Drawing.Point(454, 334);
+            this.btnCrearNuevoUsuario.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.btnCrearNuevoUsuario.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCrearNuevoUsuario.Name = "btnCrearNuevoUsuario";
+            this.btnCrearNuevoUsuario.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.btnCrearNuevoUsuario.Size = new System.Drawing.Size(184, 36);
+            this.btnCrearNuevoUsuario.TabIndex = 8;
+            this.btnCrearNuevoUsuario.Text = "Crear nuevo usuario";
+            this.btnCrearNuevoUsuario.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.btnCrearNuevoUsuario.UseAccentColor = false;
+            this.btnCrearNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btnCrearNuevoUsuario.Click += new System.EventHandler(this.btnCrearNuevoUsuario_Click);
+            // 
             // FormAgregarInvitado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnCrearNuevoUsuario);
             this.Controls.Add(this.dgvInscritos);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnInvitarUsuario);
@@ -254,5 +278,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn generoInscrito;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailInscrito;
         private System.Windows.Forms.DataGridViewTextBoxColumn telefonoInscrito;
+        private MaterialSkin.Controls.MaterialButton btnCrearNuevoUsuario;
     }
 }

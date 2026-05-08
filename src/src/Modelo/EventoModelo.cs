@@ -91,7 +91,7 @@ namespace src.Modelo
 
                 return eventos;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message); // ver qué excepción está ocurriendo
                 return new List<Evento>();
