@@ -10,32 +10,57 @@
 
 using MaterialSkin;
 using MaterialSkin.Controls;
+using src.Controlador;
+using src.Modelo;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace src.Vista
 {
     public partial class FormInvitado : BaseMaterialForm
     {
-        /// <summary>
-        /// Constructor actualizado: recibe el nombre del invitado autenticado.
-        /// El Controlador lo llama así:
-        ///   new FormInvitado(usuarioEncontrado.NombreUser)
-        /// </summary>
-        /// <param name="nombreUsuario">Nombre del invitado que inició sesión.</param>
-        public FormInvitado(string nombreUsuario)
+        private readonly EventoControlador _eventoControlador;
+        private readonly string _idUsuario;
+
+        public FormInvitado(string nombreUsuario, string idUsuario)
         {
             InitializeComponent();
 
-            // Mostramos el nombre en el título del formulario como bienvenida.
-            this.Text = $"Chroniq - Invitado: {nombreUsuario}";
+            _idUsuario = idUsuario;
+            _eventoControlador = new EventoControlador();
 
+            this.Text = $"Chroniq - Invitado: {nombreUsuario}";
         }
 
         private void FormInvitado_Load(object sender, EventArgs e)
         {
-            // Aquí irá la carga de los eventos asignados al invitado
-            // en las próximas historias de usuario (HU-07).
+            CargarEventos();
+        }
+
+        private void CargarEventos()
+        {
+            List<Evento> eventos = _eventoControlador.ObtenerEventosPorInvitado(_idUsuario);
+
+            dgInvitEventos.Rows.Clear();
+
+            if (eventos.Count == 0)
+            {
+                MessageBox.Show("No tienes eventos asignados próximos.",
+                    "Sin eventos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            foreach (var ev in eventos)
+            {
+                dgInvitEventos.Rows.Add(
+                    ev.CodigoEvent,
+                    ev.NombreEvent,
+                    ev.TipoEvent,
+                    ev.FechahoraIniEvent,
+                    ev.FechahoraFinEvent
+                );
+            }
         }
 
         private void btnVolver_Click(object sender, EventArgs e)

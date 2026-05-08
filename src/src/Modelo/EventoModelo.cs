@@ -142,8 +142,26 @@ namespace src.Modelo
                 return false;
             }
         }
-      
-       public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
+
+        public List<Evento> ObtenerEventosPorInvitado(string idUsuario)
+        {
+            var database = Conexion.ObtenerBaseDatos();
+            var collection = database.GetCollection<Evento>("Eventos");
+
+            string ahora = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+            ObjectId objectIdUsuario = ObjectId.Parse(idUsuario);
+
+            var filtro = Builders<Evento>.Filter.And(
+                Builders<Evento>.Filter.AnyEq("invitados", objectIdUsuario),
+                Builders<Evento>.Filter.Eq("estadoevento", "habilitado"),
+                Builders<Evento>.Filter.Gte("fechahoraIniEvent", ahora)
+            );
+
+            return collection.Find(filtro).ToList();
+        }
+
+        public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
         {
             try
             {

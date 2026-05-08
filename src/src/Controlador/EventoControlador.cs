@@ -152,6 +152,11 @@ namespace src.Controlador
             form.ShowDialog();
         }
 
+
+        public List<Evento> ObtenerEventosPorInvitado(string idUsuario)
+        {
+            return _eventoModelo.ObtenerEventosPorInvitado(idUsuario);
+        }
         public bool ActualizarEvento(ObjectId id, string nombre, string tipo, string fechaIni, string fechaFin)
         {
             EventoModelo modelo = new EventoModelo();
