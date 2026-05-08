@@ -1,12 +1,14 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 
 namespace src.Modelo
 {
+    // Capa de acceso a datos para la colección "Usuarios" de MongoDB.
     public class UsuarioModelo
     {
+        // Campo privado que guarda referencia a la colección; se inicializa una sola vez en el constructor.
         private readonly IMongoCollection<Usuario> _coleccionUsuarios;
 
         public UsuarioModelo()
@@ -14,7 +16,7 @@ namespace src.Modelo
             _coleccionUsuarios = Conexion.ObtenerBaseDatos().GetCollection<Usuario>("Usuarios");
         }
 
-        // Autentica comparando cédula y contraseña; retorna null si no existe coincidencia.
+        // Busca un usuario con la cédula y contraseña dadas; retorna null si no coincide ninguno.
         public Usuario BuscarPorCredenciales(int numeroCedula, string passwordUser)
         {
             var filtro = Builders<Usuario>.Filter.And(
@@ -24,7 +26,7 @@ namespace src.Modelo
             return _coleccionUsuarios.Find(filtro).FirstOrDefault();
         }
 
-        // Retorna solo los usuarios con tipoUser "Invitado"; excluye líderes.
+        // Retorna solo los usuarios cuyo tipoUser sea "Invitado" (excluye líderes).
         public List<Usuario> ObtenerInvitados()
         {
             try
@@ -38,7 +40,7 @@ namespace src.Modelo
             }
         }
 
-        // Consulta usuarios cuyo Id esté dentro de la lista; usado para mostrar inscritos de un evento.
+        // Retorna solo los usuarios cuyos Id estén en la lista dada; útil para mostrar inscritos de un evento.
         public List<Usuario> ObtenerInvitadosInscriptos(List<string> idsInvitados)
         {
             try
@@ -46,6 +48,7 @@ namespace src.Modelo
                 if (idsInvitados == null || idsInvitados.Count == 0)
                     return new List<Usuario>();
 
+                // Filter.In busca todos los documentos cuyo Id esté dentro de la lista.
                 var filtro = Builders<Usuario>.Filter.In(u => u.Id, idsInvitados);
                 return _coleccionUsuarios.Find(filtro).ToList();
             }
@@ -55,18 +58,19 @@ namespace src.Modelo
             }
         }
 
+        // Inserta un nuevo invitado; retorna false si ya existe un usuario con esa cédula.
         public bool GuardarInvitado(string nombre, string genero, string tipo, string email,
             long telefono, int edad, int cedula, string password)
         {
             try
             {
-                var database = Conexion.ObtenerBaseDatos();
+                var database   = Conexion.ObtenerBaseDatos();
                 var collection = database.GetCollection<BsonDocument>("Usuarios");
 
-                // CORRECCIÓN: evita cédulas duplicadas; retorna false si ya existe un usuario con esa cédula.
+                // Verificamos duplicado por cédula antes de insertar.
                 var filtroDuplicado = Builders<BsonDocument>.Filter.Eq("numeroCedula", cedula);
                 if (collection.Find(filtroDuplicado).Any())
-                    return false;
+                    return false; // Cédula ya registrada.
 
                 var documento = new BsonDocument
                 {

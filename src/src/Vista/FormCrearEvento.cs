@@ -4,22 +4,24 @@ using System.Windows.Forms;
 
 namespace src.Vista
 {
+    // Formulario para que el líder cree un nuevo evento con nombre, tipo y rango de fechas/horas.
     public partial class FormCrearEvento : BaseMaterialForm
     {
         private readonly EventoControlador _eventoControlador;
+        // Guardamos el id del líder para asociárselo al evento al guardarlo.
         private readonly string _idLider;
 
         public FormCrearEvento(string idLider)
         {
             InitializeComponent();
-            _idLider = idLider;
+            _idLider           = idLider;
             _eventoControlador = new EventoControlador();
         }
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            // Combinamos fecha (solo Date) + hora (solo TimeOfDay) en un único DateTime.
-            // Así el controlador recibe el dato completo sin saber cómo se capturó en la Vista.
+            // Combinamos la parte Date del DatePicker con la parte Time del TimePicker
+            // para obtener un DateTime completo (fecha + hora) que el controlador necesita.
             DateTime fechaInicio = dateTimePicker1.Value.Date + timePicker1.Value.TimeOfDay;
             DateTime fechaFin    = dateTimePicker2.Value.Date + timePicker2.Value.TimeOfDay;
 
@@ -30,6 +32,7 @@ namespace src.Vista
                 fechaFin,
                 _idLider);
 
+            // Si el registro fue exitoso, abrimos el formulario de invitados inmediatamente.
             if (nuevoId != null)
             {
                 new FormAgregarInvitado(

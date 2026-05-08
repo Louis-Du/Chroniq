@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using src.Modelo;
 using src.Vista;
 
 namespace src.Controlador
 {
+    // Controlador que maneja la lógica de autenticación de usuarios.
     public class LoginControlador
     {
+        // Usamos readonly para que el modelo no pueda ser reasignado después del constructor.
         private readonly UsuarioModelo _usuarioModelo;
 
         public LoginControlador()
@@ -15,31 +17,34 @@ namespace src.Controlador
         }
 
         /// <summary>
-        /// Valida las credenciales y abre el formulario según el rol. (HU-01)
+        /// Valida las credenciales y abre el formulario según el rol del usuario.
         ///
-        /// Como lo llama la Vista (FormLogin):
-        ///   controlador.IniciarSesion(txtNomuser.Text, txtContraseña.Text, this);
+        /// La Vista lo llama así:
+        ///   _loginControlador.IniciarSesion(numeroCedula, txtContraseña.Text, this);
         /// </summary>
         public void IniciarSesion(int numeroCedula, string passwordUser, Form formularioActual)
         {
             try
             {
+                // Validamos que los campos no estén vacíos antes de consultar la BD.
                 if (numeroCedula <= 0 || string.IsNullOrWhiteSpace(passwordUser))
                 {
-                    MessageBox.Show("Por favor, ingresa el nombre de usuario y la contraseña.",
+                    MessageBox.Show("Por favor, ingresa el número de cédula y la contraseña.",
                         "Campos requeridos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 Usuario usuarioEncontrado = _usuarioModelo.BuscarPorCredenciales(numeroCedula, passwordUser);
 
+                // Si no existe el usuario, mostramos error y detenemos el flujo.
                 if (usuarioEncontrado == null)
                 {
-                    MessageBox.Show("Usuario o contraseña incorrectos. Intenta de nuevo.",
+                    MessageBox.Show("Cédula o contraseña incorrectos. Intenta de nuevo.",
                         "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
+                // Redirigimos al formulario correspondiente según el tipo de usuario.
                 if (usuarioEncontrado.TipoUser == "Lider")
                 {
                     AbrirFormulario(
@@ -54,6 +59,7 @@ namespace src.Controlador
                 }
                 else
                 {
+                    // Tipo desconocido: puede ocurrir si se agrega un nuevo rol sin actualizar este código.
                     MessageBox.Show(
                         $"El tipo de usuario '{usuarioEncontrado.TipoUser}' no está configurado en el sistema.",
                         "Error de configuración", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -61,16 +67,14 @@ namespace src.Controlador
             }
             catch (Exception ex)
             {
+                // Capturamos excepciones de conexión a MongoDB u otros errores inesperados.
                 MessageBox.Show(
                     $"Error al iniciar sesión:\n\n{ex.Message}\n\nDetalles:\n{ex.InnerException?.Message}",
                     "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /// <summary>
-        /// Abre el formulario destino y oculta el formulario actual.
-        /// Privado: solo lo usa este Controlador internamente.
-        /// </summary>
+        // Muestra el formulario destino y oculta el formulario de login.
         private void AbrirFormulario(Form formularioDestino, Form formularioActual)
         {
             formularioDestino.Show();

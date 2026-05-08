@@ -1,4 +1,4 @@
-﻿using src.Controlador;
+using src.Controlador;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,11 +12,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace src.Vista
 {
+    // Formulario para agregar invitados a un evento; muestra disponibles e inscritos en dos grids.
     public partial class FormAgregarInvitado : Form
     {
         private readonly EventoControlador _eventoControlador;
 
-        // Campos para guardar los datos del evento recibidos en el constructor
+        // Datos del evento recibidos en el constructor; se necesitan para verificar conflictos de horario.
         private readonly string _idEvento;
         private readonly string _fechaIni;
         private readonly string _fechaFin;
@@ -26,17 +27,16 @@ namespace src.Vista
             InitializeComponent();
 
             _eventoControlador = new EventoControlador();
-
-            // Guardar los parámetros en los campos para usarlos en el botón
             _idEvento = idEvento;
             _fechaIni = FechahoraIniEvent;
             _fechaFin = FechahoraFinEvent;
 
+            // Cargamos ambas listas al abrir el formulario.
             CargarUsuariosDisponibles();
             CargarInvitadosActuales();
-
         }
 
+        // Muestra los invitados que aún NO están inscritos en este evento.
         private void CargarUsuariosDisponibles()
         {
             var invitados = _eventoControlador.ObtenerInvitados(_idEvento);
@@ -44,40 +44,42 @@ namespace src.Vista
             dgvUsuariosDisponibles.AutoGenerateColumns = false;
             dgvUsuariosDisponibles.DataSource = invitados;
 
+            // Enlazamos cada columna del grid a la propiedad correspondiente del objeto Usuario.
             numeroCedula.DataPropertyName = "NumeroCedula";
-            nombreUser.DataPropertyName = "NombreUser";
-            edadUser.DataPropertyName = "EdadUser";
-            generoUser.DataPropertyName = "GeneroUser";
-            emailUser.DataPropertyName = "EmailUser";
+            nombreUser.DataPropertyName   = "NombreUser";
+            edadUser.DataPropertyName     = "EdadUser";
+            generoUser.DataPropertyName   = "GeneroUser";
+            emailUser.DataPropertyName    = "EmailUser";
             telefonoUser.DataPropertyName = "TelefonoUser";
         }
 
+        // Muestra los invitados que YA están inscritos en este evento.
         private void CargarInvitadosActuales()
         {
             var inscritos = _eventoControlador.ObtenerInscriptos(_idEvento);
             dgvInscritos.AutoGenerateColumns = false;
             dgvInscritos.DataSource = inscritos;
-            
+
             numeroCedulaInscrito.DataPropertyName = "NumeroCedula";
-            nombreInscrito.DataPropertyName = "NombreUser";
-            edadInscrito.DataPropertyName = "EdadUser";
-            generoInscrito.DataPropertyName = "GeneroUser";
-            emailInscrito.DataPropertyName = "EmailUser";
-            telefonoInscrito.DataPropertyName = "TelefonoUser";
+            nombreInscrito.DataPropertyName       = "NombreUser";
+            edadInscrito.DataPropertyName         = "EdadUser";
+            generoInscrito.DataPropertyName       = "GeneroUser";
+            emailInscrito.DataPropertyName        = "EmailUser";
+            telefonoInscrito.DataPropertyName     = "TelefonoUser";
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("¿Estás seguro que dejar de agregar invitados?", "Volver al menú anterior", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(
+                "¿Estás seguro que dejar de agregar invitados?",
+                "Volver al menú anterior", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
             if (result == DialogResult.Yes)
-            {
                 this.Close();
-            }
         }
 
         private void btnInvitarUsuario_Click(object sender, EventArgs e)
         {
-            // Verificar que haya una fila seleccionada en el grid
             if (dgvUsuariosDisponibles.CurrentRow == null)
             {
                 MessageBox.Show("Selecciona un invitado de la lista.",
@@ -85,12 +87,13 @@ namespace src.Vista
                 return;
             }
 
-            // Obtenemos el Id del invitado desde la fila seleccionada.
-            // DataBoundItem devuelve el objeto Usuario de esa fila.
+            // DataBoundItem retorna el objeto Usuario real enlazado a la fila seleccionada.
             var invitadoSeleccionado = (src.Modelo.Usuario)dgvUsuariosDisponibles.CurrentRow.DataBoundItem;
 
-            bool ok = _eventoControlador.AgregarInvitado(_idEvento, invitadoSeleccionado.Id, _fechaIni, _fechaFin);
+            bool ok = _eventoControlador.AgregarInvitado(
+                _idEvento, invitadoSeleccionado.Id, _fechaIni, _fechaFin);
 
+            // Si se agregó correctamente, actualizamos ambos grids para reflejar el cambio.
             if (ok)
             {
                 CargarInvitadosActuales();
@@ -101,7 +104,9 @@ namespace src.Vista
         private void btnCrearNuevoUsuario_Click(object sender, EventArgs e)
         {
             FormCrearInvitado frm = new FormCrearInvitado();
-            frm.FormClosed += (s, args) => CargarUsuariosDisponibles();             
+
+            // Al cerrar el form de crear invitado, recargamos disponibles por si el nuevo aparece.
+            frm.FormClosed += (s, args) => CargarUsuariosDisponibles();
             frm.Show();
         }
     }

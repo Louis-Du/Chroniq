@@ -1,11 +1,13 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
 
 namespace src.Modelo
 {
+    // Clase que representa un usuario (Lider o Invitado) en la colección "Usuarios".
     public class Usuario
     {
+        // _id de MongoDB, mapeado a string para facilitar su uso en C#.
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
@@ -16,7 +18,7 @@ namespace src.Modelo
         [BsonElement("passwordUser")]
         public string PasswordUser { get; set; }
 
-        // El campo en MongoDB se llama "tipoUser" → "Lider" o "Invitado"
+        // Rol del usuario en el sistema: "Lider" o "Invitado".
         [BsonElement("tipoUser")]
         public string TipoUser { get; set; }
 
@@ -26,12 +28,14 @@ namespace src.Modelo
         [BsonElement("emailUser")]
         public string EmailUser { get; set; }
 
+        // Se usa long para soportar números de teléfono de 10+ dígitos.
         [BsonElement("telefonoUser")]
         public long TelefonoUser { get; set; }
 
         [BsonElement("edadUser")]
         public int EdadUser { get; set; }
 
+        // Cédula usada también como identificador para el login.
         [BsonElement("numeroCedula")]
         public int NumeroCedula { get; set; }
     }
